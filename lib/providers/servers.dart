@@ -13,13 +13,13 @@ class Servers with ChangeNotifier {
   Servers(this._encryptedBox);
 
   static const Map<String, List> _seeds = {
-    'peercoin': [
-      'wss://electrum.peercoinexplorer.net:50004',
-      'wss://allingas.peercoinexplorer.net:50004',
+    'reddcoin': [
+      'wss://electrum01.reddcoin.com:50004',
+      'wss://electrum02.reddcoin.com:50004',
+      'wss://electrum03.reddcoin.com:50004',
     ],
-    'peercoinTestnet': [
-      'wss://testnet-electrum.peercoinexplorer.net:50009',
-      'wss://allingas.peercoinexplorer.net:50009',
+    'reddcoinTestnet': [
+      'wss://electrum-testnet.reddcoin.com:50004',
     ]
   };
 

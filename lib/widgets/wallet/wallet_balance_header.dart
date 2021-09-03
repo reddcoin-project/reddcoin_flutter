@@ -31,7 +31,7 @@ class WalletBalanceHeader extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '${_wallet.balance / 1000000}',
+                      '${_wallet.balance / 100000000}',
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.grey[100],
@@ -55,7 +55,7 @@ class WalletBalanceHeader extends StatelessWidget {
                         !_wallet.title.contains('Testnet')
                     ? Text(
                         '${PriceTicker.renderPrice(
-                          _wallet.balance / 1000000,
+                          _wallet.balance / 100000000,
                           _settings.selectedCurrency,
                           _wallet.letterCode,
                           _settings.exchangeRates,

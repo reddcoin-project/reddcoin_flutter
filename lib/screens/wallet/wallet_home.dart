@@ -156,7 +156,7 @@ class _WalletHomeState extends State<WalletHomeScreen>
           await Provider.of<UnencryptedOptions>(context, listen: false).prefs;
       var discarded = _prefs.getBool('highValueNotice') ?? false;
       if (!discarded &&
-          PriceTicker.renderPrice(_wallet.balance / 1000000, 'USD',
+          PriceTicker.renderPrice(_wallet.balance / 100000000, 'USD',
                   _wallet.letterCode, _appSettings.exchangeRates) >=
               1000) {
         //Coins worth 1000 USD or more

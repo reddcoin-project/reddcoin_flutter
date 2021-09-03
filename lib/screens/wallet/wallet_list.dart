@@ -271,7 +271,7 @@ class _WalletListScreenState extends State<WalletListScreen>
                                         subtitle: Row(
                                           children: [
                                             Text(
-                                              (_wallet.balance / 1000000)
+                                              (_wallet.balance / 100000000)
                                                   .toString(),
                                               style: TextStyle(
                                                 fontSize: 14,
