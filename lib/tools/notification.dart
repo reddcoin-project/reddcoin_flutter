@@ -6,9 +6,9 @@ class LocalNotificationSettings {
 
   static const AndroidNotificationDetails androidPlatformChannelSpecifics =
       AndroidNotificationDetails(
-    'ppc',
-    'Peercoin',
-    'Notification channel for Peercoin app',
+    'rdd',
+    'Reddcoin',
+    'Notification channel for Reddcoin app',
     importance: Importance.max,
     priority: Priority.high,
     showWhen: true,

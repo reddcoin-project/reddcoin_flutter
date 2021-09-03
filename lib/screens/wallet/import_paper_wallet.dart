@@ -3,14 +3,14 @@ import 'dart:developer';
 import 'package:bitcoin_flutter/bitcoin_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:peercoin/models/availablecoins.dart';
-import 'package:peercoin/models/coin.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/providers/electrumconnection.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/tools/app_routes.dart';
-import 'package:peercoin/widgets/buttons.dart';
-import 'package:peercoin/widgets/loading_indicator.dart';
+import 'package:reddcoin/models/availablecoins.dart';
+import 'package:reddcoin/models/coin.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/providers/electrumconnection.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/tools/app_routes.dart';
+import 'package:reddcoin/widgets/buttons.dart';
+import 'package:reddcoin/widgets/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
 class ImportPaperWalletScreen extends StatefulWidget {

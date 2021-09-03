@@ -1,1 +1,1 @@
-Your mobile wallet for Peercoin and Peercoin testnet.
+Your mobile wallet for Reddcoin and Reddcoin testnet.

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info/package_info.dart';
-import 'package:peercoin/tools/app_localizations.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:mailto/mailto.dart';
 
@@ -35,8 +35,8 @@ class _AboutScreenState extends State<AboutScreen> {
 
   Future<void> launchMailto() async {
     final mailtoLink = Mailto(
-      to: ['hello@app.peercoin.net'],
-      subject: 'Peercoin Wallet',
+      to: ['hello@app.reddcoin.net'],
+      subject: 'Reddcoin Wallet',
     );
     await launch('$mailtoLink');
   }

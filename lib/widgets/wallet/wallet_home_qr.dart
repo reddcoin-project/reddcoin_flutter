@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/widgets/buttons.dart';
-import 'package:peercoin/widgets/double_tab_to_clipboard.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/widgets/buttons.dart';
+import 'package:reddcoin/widgets/double_tab_to_clipboard.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share/share.dart';
 

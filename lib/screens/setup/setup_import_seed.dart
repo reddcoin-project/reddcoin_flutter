@@ -2,14 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/providers/unencryptedOptions.dart';
-import 'package:peercoin/tools/app_localizations.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/providers/unencryptedOptions.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
 import 'package:bip39/bip39.dart' as bip39;
-import 'package:peercoin/tools/app_routes.dart';
-import 'package:peercoin/widgets/buttons.dart';
-import 'package:peercoin/widgets/loading_indicator.dart';
-import 'package:peercoin/widgets/setup_progress.dart';
+import 'package:reddcoin/tools/app_routes.dart';
+import 'package:reddcoin/widgets/buttons.dart';
+import 'package:reddcoin/widgets/loading_indicator.dart';
+import 'package:reddcoin/widgets/setup_progress.dart';
 import 'package:provider/provider.dart';
 
 class SetupImportSeedScreen extends StatefulWidget {

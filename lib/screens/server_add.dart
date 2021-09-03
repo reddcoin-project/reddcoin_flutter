@@ -3,12 +3,12 @@ import 'dart:developer';
 
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
-import 'package:peercoin/models/availablecoins.dart';
-import 'package:peercoin/models/server.dart';
-import 'package:peercoin/providers/electrumconnection.dart';
-import 'package:peercoin/providers/servers.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/widgets/loading_indicator.dart';
+import 'package:reddcoin/models/availablecoins.dart';
+import 'package:reddcoin/models/server.dart';
+import 'package:reddcoin/providers/electrumconnection.dart';
+import 'package:reddcoin/providers/servers.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/widgets/loading_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:web_socket_channel/io.dart';
 

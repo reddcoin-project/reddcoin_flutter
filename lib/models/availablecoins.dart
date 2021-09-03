@@ -1,5 +1,5 @@
 import 'package:bitcoin_flutter/bitcoin_flutter.dart';
-import 'package:peercoin/models/coin.dart';
+import 'package:reddcoin/models/coin.dart';
 
 class AvailableCoins {
   final Map<String, Coin> _availableCoinList = {

@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:peercoin/models/server.dart';
-import 'package:peercoin/providers/encryptedbox.dart';
+import 'package:reddcoin/models/server.dart';
+import 'package:reddcoin/providers/encryptedbox.dart';
 
 class Servers with ChangeNotifier {
   final EncryptedBox _encryptedBox;

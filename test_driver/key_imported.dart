@@ -34,7 +34,7 @@ void main() {
       test(
         'create wallet from imported seed',
         () async {
-          //creates a peercoin testnet wallet from an imported seed and checks if it connects
+          //creates a reddcoin testnet wallet from an imported seed and checks if it connects
           await driver.tap(find.text('Import existing seed'));
           await driver.tap(find.byValueKey('importTextField'));
           await driver.enterText(
@@ -49,12 +49,12 @@ void main() {
           await driver.runUnsynchronized(
             () async {
               await driver.tap(find.byValueKey('newWalletIconButton'));
-              await driver.tap(find.text('Peercoin Testnet'));
+              await driver.tap(find.text('Reddcoin Testnet'));
               await driver.tap(
-                find.text('Peercoin Testnet'),
+                find.text('Reddcoin Testnet'),
                 timeout: Duration(minutes: 2),
               ); //tap into wallet
-              await driver.tap(find.text('Peercoin Testnet'));
+              await driver.tap(find.text('Reddcoin Testnet'));
             },
             timeout: Duration(
               minutes: 15,

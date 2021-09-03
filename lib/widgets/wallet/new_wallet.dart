@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:peercoin/providers/appsettings.dart';
-import 'package:peercoin/providers/unencryptedOptions.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/models/availablecoins.dart';
-import 'package:peercoin/models/coin.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/tools/app_routes.dart';
-import 'package:peercoin/tools/auth.dart';
+import 'package:reddcoin/providers/appsettings.dart';
+import 'package:reddcoin/providers/unencryptedOptions.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/models/availablecoins.dart';
+import 'package:reddcoin/models/coin.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/tools/app_routes.dart';
+import 'package:reddcoin/tools/auth.dart';
 import 'package:provider/provider.dart';
 
 class NewWalletDialog extends StatefulWidget {

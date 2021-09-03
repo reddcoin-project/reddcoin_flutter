@@ -34,7 +34,7 @@ void main() {
     test(
       'create new wallet from scratch',
       () async {
-        //creates a brand new peercoin testnet wallet from scratch and check if it connects
+        //creates a brand new reddcoin testnet wallet from scratch and check if it connects
         await driver.tap(find.text('Create wallet with new seed'));
         await driver.tap(elevatedButtonFinder);
         await Process.run(
@@ -50,8 +50,8 @@ void main() {
         }
         await driver.runUnsynchronized(() async {
           await driver.tap(find.byValueKey('newWalletIconButton'));
-          await driver.tap(find.text('Peercoin Testnet'));
-          await driver.tap(find.text('Peercoin Testnet')); //tap into wallet
+          await driver.tap(find.text('Reddcoin Testnet'));
+          await driver.tap(find.text('Reddcoin Testnet')); //tap into wallet
         });
         expect(await driver.getText(find.text('connected')), 'connected');
       },

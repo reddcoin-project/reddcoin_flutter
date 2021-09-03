@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:peercoin/models/app_options.dart';
-import 'package:peercoin/providers/encryptedbox.dart';
+import 'package:reddcoin/models/app_options.dart';
+import 'package:reddcoin/providers/encryptedbox.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppSettings with ChangeNotifier {

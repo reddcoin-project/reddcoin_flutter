@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/models/availablecoins.dart';
-import 'package:peercoin/models/coinwallet.dart';
-import 'package:peercoin/models/wallettransaction.dart';
-import 'package:peercoin/widgets/buttons.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/models/availablecoins.dart';
+import 'package:reddcoin/models/coinwallet.dart';
+import 'package:reddcoin/models/wallettransaction.dart';
+import 'package:reddcoin/widgets/buttons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TransactionDetails extends StatelessWidget {

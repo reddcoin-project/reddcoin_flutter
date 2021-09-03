@@ -1,8 +1,8 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:hive/hive.dart';
-import 'package:peercoin/models/walletaddress.dart';
-import 'package:peercoin/models/wallettransaction.dart';
-import 'package:peercoin/models/walletutxo.dart';
+import 'package:reddcoin/models/walletaddress.dart';
+import 'package:reddcoin/models/wallettransaction.dart';
+import 'package:reddcoin/models/walletutxo.dart';
 part 'coinwallet.g.dart';
 
 @HiveType(typeId: 1)

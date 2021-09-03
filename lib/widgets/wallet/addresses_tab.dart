@@ -2,13 +2,13 @@ import 'package:bitcoin_flutter/bitcoin_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:peercoin/models/availablecoins.dart';
-import 'package:peercoin/models/coin.dart';
-import 'package:peercoin/models/walletaddress.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/screens/wallet/wallet_home.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/widgets/wallet/wallet_home_qr.dart';
+import 'package:reddcoin/models/availablecoins.dart';
+import 'package:reddcoin/models/coin.dart';
+import 'package:reddcoin/models/walletaddress.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/screens/wallet/wallet_home.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/widgets/wallet/wallet_home_qr.dart';
 import 'package:provider/provider.dart';
 
 class AddressTab extends StatefulWidget {

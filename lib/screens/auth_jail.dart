@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:peercoin/providers/appsettings.dart';
-import 'package:peercoin/providers/encryptedbox.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/tools/app_routes.dart';
-import 'package:peercoin/tools/auth.dart';
+import 'package:reddcoin/providers/appsettings.dart';
+import 'package:reddcoin/providers/encryptedbox.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/tools/app_routes.dart';
+import 'package:reddcoin/tools/auth.dart';
 import 'package:provider/provider.dart';
 
 class AuthJailScreen extends StatefulWidget {

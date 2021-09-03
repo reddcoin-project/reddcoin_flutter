@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:peercoin/providers/electrumconnection.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/widgets/loading_indicator.dart';
+import 'package:reddcoin/providers/electrumconnection.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/widgets/loading_indicator.dart';
 
 class WalletHomeConnection extends StatelessWidget {
   final ElectrumConnectionState _connectionState;

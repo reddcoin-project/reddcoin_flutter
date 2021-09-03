@@ -2,21 +2,21 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:peercoin/providers/appsettings.dart';
-import 'package:peercoin/providers/unencryptedOptions.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/models/coinwallet.dart';
-import 'package:peercoin/models/wallettransaction.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/providers/electrumconnection.dart';
-import 'package:peercoin/tools/app_routes.dart';
-import 'package:peercoin/tools/auth.dart';
-import 'package:peercoin/tools/price_ticker.dart';
-import 'package:peercoin/widgets/wallet/addresses_tab.dart';
-import 'package:peercoin/widgets/loading_indicator.dart';
-import 'package:peercoin/widgets/wallet/receive_tab.dart';
-import 'package:peercoin/widgets/wallet/send_tab.dart';
-import 'package:peercoin/widgets/wallet/transactions_list.dart';
+import 'package:reddcoin/providers/appsettings.dart';
+import 'package:reddcoin/providers/unencryptedOptions.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/models/coinwallet.dart';
+import 'package:reddcoin/models/wallettransaction.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/providers/electrumconnection.dart';
+import 'package:reddcoin/tools/app_routes.dart';
+import 'package:reddcoin/tools/auth.dart';
+import 'package:reddcoin/tools/price_ticker.dart';
+import 'package:reddcoin/widgets/wallet/addresses_tab.dart';
+import 'package:reddcoin/widgets/loading_indicator.dart';
+import 'package:reddcoin/widgets/wallet/receive_tab.dart';
+import 'package:reddcoin/widgets/wallet/send_tab.dart';
+import 'package:reddcoin/widgets/wallet/transactions_list.dart';
 import 'package:provider/provider.dart';
 
 class WalletHomeScreen extends StatefulWidget {

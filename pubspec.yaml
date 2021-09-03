@@ -1,5 +1,5 @@
-name: peercoin
-description: A new Peercoin wallet.
+name: reddcoin
+description: A new Reddcoin wallet.
 
 version: 0.6.1+54
 
@@ -67,7 +67,7 @@ flutter_icons:
   remove_alpha_ios: true
 
 flutter_launcher_name:
-  name: "Peercoin"
+  name: "Reddcoin"
 
 flutter_native_splash:
   color: "#FFFFFF"

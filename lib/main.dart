@@ -6,12 +6,12 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:peercoin/models/app_options.dart';
-import 'package:peercoin/models/server.dart';
-import 'package:peercoin/providers/appsettings.dart';
-import 'package:peercoin/providers/servers.dart';
-import 'package:peercoin/screens/auth_jail.dart';
-import 'package:peercoin/tools/theme_manager.dart';
+import 'package:reddcoin/models/app_options.dart';
+import 'package:reddcoin/models/server.dart';
+import 'package:reddcoin/providers/appsettings.dart';
+import 'package:reddcoin/providers/servers.dart';
+import 'package:reddcoin/screens/auth_jail.dart';
+import 'package:reddcoin/tools/theme_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:theme_mode_handler/theme_mode_handler.dart';
@@ -90,10 +90,10 @@ void main() async {
   }
 
   //run
-  runApp(PeercoinApp());
+  runApp(ReddcoinApp());
 }
 
-class PeercoinApp extends StatelessWidget {
+class ReddcoinApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -136,7 +136,7 @@ class PeercoinApp extends StatelessWidget {
         manager: ThemeManager(),
         builder: (ThemeMode themeMode) {
           return MaterialApp(
-            title: 'Peercoin',
+            title: 'Reddcoin',
             debugShowCheckedModeBanner: false,
             supportedLocales: AppLocalizations.availableLocales.keys
                 .map((lang) => Locale(lang)),

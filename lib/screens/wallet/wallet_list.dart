@@ -3,16 +3,16 @@ import 'dart:io';
 
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
-import 'package:peercoin/providers/appsettings.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/models/availablecoins.dart';
-import 'package:peercoin/models/coinwallet.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/tools/app_routes.dart';
-import 'package:peercoin/tools/auth.dart';
-import 'package:peercoin/tools/price_ticker.dart';
-import 'package:peercoin/widgets/loading_indicator.dart';
-import 'package:peercoin/widgets/wallet/new_wallet.dart';
+import 'package:reddcoin/providers/appsettings.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/models/availablecoins.dart';
+import 'package:reddcoin/models/coinwallet.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/tools/app_routes.dart';
+import 'package:reddcoin/tools/auth.dart';
+import 'package:reddcoin/tools/price_ticker.dart';
+import 'package:reddcoin/widgets/loading_indicator.dart';
+import 'package:reddcoin/widgets/wallet/new_wallet.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 
@@ -179,8 +179,8 @@ class _WalletListScreenState extends State<WalletListScreen>
                           child: GestureDetector(
                             onTap: () => Share.share(
                               Platform.isAndroid
-                                  ? 'https://play.google.com/store/apps/details?id=com.coinerella.peercoin'
-                                  : 'https://apps.apple.com/us/app/peercoin-wallet/id1571755170',
+                                  ? 'https://play.google.com/store/apps/details?id=com.coinerella.reddcoin'
+                                  : 'https://apps.apple.com/us/app/reddcoin-wallet/id1571755170',
                             ),
                             child: Image.asset(
                               'assets/icon/ppc-logo.png',
@@ -193,7 +193,7 @@ class _WalletListScreenState extends State<WalletListScreen>
                   Padding(
                     padding: const EdgeInsets.only(top: 16),
                     child: Text(
-                      'Peercoin Wallet',
+                      'Reddcoin Wallet',
                       style: TextStyle(
                         letterSpacing: 1.4,
                         fontSize: 24,

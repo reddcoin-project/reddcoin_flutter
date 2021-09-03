@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:peercoin/providers/appsettings.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/tools/price_ticker.dart';
-import 'package:peercoin/widgets/buttons.dart';
-import 'package:peercoin/widgets/expanded_section.dart';
+import 'package:reddcoin/providers/appsettings.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/tools/price_ticker.dart';
+import 'package:reddcoin/widgets/buttons.dart';
+import 'package:reddcoin/widgets/expanded_section.dart';
 
 class SettingsPriceTicker extends StatefulWidget {
   final AppSettings _settings;

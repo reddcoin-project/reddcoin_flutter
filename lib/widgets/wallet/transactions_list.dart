@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/models/wallettransaction.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/models/wallettransaction.dart';
 import 'package:intl/intl.dart';
-import 'package:peercoin/tools/app_routes.dart';
-import 'package:peercoin/widgets/wallet/wallet_balance_header.dart';
+import 'package:reddcoin/tools/app_routes.dart';
+import 'package:reddcoin/widgets/wallet/wallet_balance_header.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:provider/provider.dart';
 

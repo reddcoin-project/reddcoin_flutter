@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peercoin/tools/app_themes.dart';
+import 'package:reddcoin/tools/app_themes.dart';
 
 class PeerButton extends StatelessWidget {
   final Function() action;

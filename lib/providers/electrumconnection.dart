@@ -6,17 +6,17 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
-import 'package:peercoin/models/availablecoins.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/providers/servers.dart';
+import 'package:reddcoin/models/availablecoins.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/providers/servers.dart';
 import 'package:web_socket_channel/io.dart';
 
 enum ElectrumConnectionState { waiting, connected, offline }
 
 class ElectrumConnection with ChangeNotifier {
   static const Map<String, double> _requiredProtocol = {
-    'peercoin': 1.4,
-    'peercoinTestnet': 1.4
+    'reddcoin': 1.4,
+    'reddcoinTestnet': 1.4
   };
 
   Timer? _pingTimer;

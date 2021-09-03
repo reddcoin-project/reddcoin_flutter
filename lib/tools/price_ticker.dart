@@ -4,12 +4,12 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
-import 'package:peercoin/providers/appsettings.dart';
+import 'package:reddcoin/providers/appsettings.dart';
 
 class PriceTicker {
   static Future<Map<String, dynamic>> getDataFromTicker() async {
     final client = RetryClient(http.Client());
-    var url = Uri.parse('https://peercoinexplorer.net/price-ticker');
+    var url = Uri.parse('https://reddcoinexplorer.net/price-ticker');
     try {
       var response = await client.read(url);
       final Map<String, dynamic> data = json.decode(response);

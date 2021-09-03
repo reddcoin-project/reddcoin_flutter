@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peercoin/tools/app_localizations.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SetupLanguageScreen extends StatefulWidget {

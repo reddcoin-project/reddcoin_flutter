@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
-import 'package:peercoin/models/server.dart';
-import 'package:peercoin/providers/electrumconnection.dart';
-import 'package:peercoin/providers/servers.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/tools/app_routes.dart';
+import 'package:reddcoin/models/server.dart';
+import 'package:reddcoin/providers/electrumconnection.dart';
+import 'package:reddcoin/providers/servers.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/tools/app_routes.dart';
 import 'package:provider/provider.dart';
 
 class ServerSettingsScreen extends StatefulWidget {

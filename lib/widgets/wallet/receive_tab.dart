@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/models/availablecoins.dart';
-import 'package:peercoin/models/coin.dart';
-import 'package:peercoin/models/coinwallet.dart';
-import 'package:peercoin/widgets/buttons.dart';
-import 'package:peercoin/widgets/double_tab_to_clipboard.dart';
-import 'package:peercoin/widgets/service_container.dart';
-import 'package:peercoin/widgets/wallet/wallet_balance_header.dart';
-import 'package:peercoin/widgets/wallet/wallet_home_qr.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/models/availablecoins.dart';
+import 'package:reddcoin/models/coin.dart';
+import 'package:reddcoin/models/coinwallet.dart';
+import 'package:reddcoin/widgets/buttons.dart';
+import 'package:reddcoin/widgets/double_tab_to_clipboard.dart';
+import 'package:reddcoin/widgets/service_container.dart';
+import 'package:reddcoin/widgets/wallet/wallet_balance_header.dart';
+import 'package:reddcoin/widgets/wallet/wallet_home_qr.dart';
 import 'package:share/share.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -95,10 +95,10 @@ class _ReceiveTabState extends State<ReceiveTab> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            AppLocalizations.instance.translate('buy_peercoin_dialog_title'),
+            AppLocalizations.instance.translate('buy_reddcoin_dialog_title'),
           ),
           content: Text(
-            AppLocalizations.instance.translate('buy_peercoin_dialog_content'),
+            AppLocalizations.instance.translate('buy_reddcoin_dialog_content'),
           ),
           actions: <Widget>[
             TextButton(
@@ -278,7 +278,7 @@ class _ReceiveTabState extends State<ReceiveTab> {
                       children: <Widget>[
                         PeerServiceTitle(
                             title: AppLocalizations.instance
-                                .translate('buy_peercoin')),
+                                .translate('buy_reddcoin')),
                         SizedBox(height: 20),
                         Text(
                           AppLocalizations.instance

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:peercoin/tools/app_localizations.dart';
-import 'package:peercoin/providers/activewallets.dart';
-import 'package:peercoin/tools/app_routes.dart';
-import 'package:peercoin/widgets/buttons.dart';
-import 'package:peercoin/widgets/setup_progress.dart';
+import 'package:reddcoin/tools/app_localizations.dart';
+import 'package:reddcoin/providers/activewallets.dart';
+import 'package:reddcoin/tools/app_routes.dart';
+import 'package:reddcoin/widgets/buttons.dart';
+import 'package:reddcoin/widgets/setup_progress.dart';
 import 'package:provider/provider.dart';
 
 class SetupScreen extends StatefulWidget {
