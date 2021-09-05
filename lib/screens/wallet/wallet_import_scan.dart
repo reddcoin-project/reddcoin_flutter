@@ -5,6 +5,7 @@ import 'package:reddcoin/providers/activewallets.dart';
 import 'package:reddcoin/providers/electrumconnection.dart';
 import 'package:reddcoin/tools/app_localizations.dart';
 import 'package:reddcoin/tools/app_routes.dart';
+import 'package:reddcoin/widgets/buttons.dart';
 import 'package:reddcoin/widgets/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -97,6 +98,16 @@ class _WalletImportScanScreenState extends State<WalletImportScanScreen> {
           SizedBox(height: 20),
           Text(
             AppLocalizations.instance.translate('wallet_scan_notice'),
+          ),
+          SizedBox(height: 20),
+          PeerButton(
+            text: AppLocalizations.instance
+                .translate('server_settings_alert_cancel'),
+            action: () async {
+              _timer.cancel();
+              await Navigator.of(context)
+                  .pushReplacementNamed(Routes.WalletList);
+            },
           )
         ],
       ),
