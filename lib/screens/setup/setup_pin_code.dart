@@ -5,7 +5,6 @@ import 'package:local_auth/local_auth.dart';
 import 'package:reddcoin/providers/appsettings.dart';
 import 'package:reddcoin/tools/app_localizations.dart';
 import 'package:reddcoin/providers/encryptedbox.dart';
-import 'package:reddcoin/providers/unencryptedOptions.dart';
 import 'package:reddcoin/tools/app_routes.dart';
 import 'package:reddcoin/widgets/buttons.dart';
 import 'package:reddcoin/widgets/setup_progress.dart';
