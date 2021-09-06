@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:reddcoin/screens/app_settings_screen.dart';
 import 'package:reddcoin/screens/auth_jail.dart';
+import 'package:reddcoin/screens/setup/setup_data_feeds.dart';
 import 'package:reddcoin/screens/wallet/import_paper_wallet.dart';
 import 'package:reddcoin/screens/qrcodescanner.dart';
 import 'package:reddcoin/screens/server_add.dart';
@@ -23,6 +24,7 @@ class Routes {
   static const String SetupScreen = '/setup-save-seed';
   static const String SetupImport = '/setup-import-seed';
   static const String SetupLanguage = '/setup-language';
+  static const String SetupDataFeeds = '/setup-feeds';
   static const String Transaction = '/tx-detail';
   static const String WalletHome = '/wallet-home';
   static const String WalletImportScan = '/wallet-import-scan';
@@ -47,6 +49,7 @@ class Routes {
       Routes.AuthJail: (context) => AuthJailScreen(),
       Routes.ServerSettings: (context) => ServerSettingsScreen(),
       Routes.ServerAdd: (context) => ServerAddScreen(),
+      Routes.SetupDataFeeds: (context) => SetupDataFeedsScreen(),
     };
   }
 }

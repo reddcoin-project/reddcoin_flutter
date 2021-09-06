@@ -9,7 +9,7 @@ import 'package:reddcoin/providers/appsettings.dart';
 class PriceTicker {
   static Future<Map<String, dynamic>> getDataFromTicker() async {
     final client = RetryClient(http.Client());
-    var url = Uri.parse('https://peercoinexplorer.net/price-ticker');
+    var url = Uri.parse('https://live.reddcoin.com/price-ticker');
     try {
       var response = await client.read(url);
       final Map<String, dynamic> data = json.decode(response);
