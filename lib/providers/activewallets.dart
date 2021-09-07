@@ -465,7 +465,7 @@ class ActiveWallets with ChangeNotifier {
 
         //start building tx
         final tx = TransactionBuilder(network: network);
-        tx.setVersion(1);
+        tx.setVersion(2);
         if (_needsChange == true) {
           var changeAmount = _totalInputValue - _txAmount - fee;
           log('change amount $changeAmount');
