@@ -19,7 +19,7 @@ class Servers with ChangeNotifier {
       'wss://electrum03.reddcoin.com:50004',
     ],
     'reddcoinTestnet': [
-      'wss://electrum-testnet.reddcoin.com:50004',
+      'ws://167.71.25.225:51003',
     ]
   };
 
