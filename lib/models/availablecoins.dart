@@ -8,8 +8,8 @@ class AvailableCoins {
       displayName: 'Reddcoin',
       uriCode: 'reddcoin',
       letterCode: 'RDD',
-      iconPath: 'assets/icon/ppc-icon-48.png',
-      iconPathTransparent: 'assets/icon/ppc-icon-white-48.png',
+      iconPath: 'assets/icon/rdd-icon-48.png',
+      iconPathTransparent: 'assets/icon/rdd-icon-white-48.png',
       networkType: NetworkType(
         messagePrefix: '\x18Reddcoin Signed Message:\n',
         bech32: 'rc',
@@ -30,8 +30,8 @@ class AvailableCoins {
       displayName: 'Reddcoin Testnet',
       uriCode: 'reddcoin',
       letterCode: 'tRDD',
-      iconPath: 'assets/icon/ppc-icon-48.png',
-      iconPathTransparent: 'assets/icon/ppc-icon-white-48.png',
+      iconPath: 'assets/icon/rdd-icon-48.png',
+      iconPathTransparent: 'assets/icon/rdd-icon-white-48.png',
       networkType: NetworkType(
         messagePrefix: '\x18Reddcoin Signed Message:\n',
         bech32: 'trc',

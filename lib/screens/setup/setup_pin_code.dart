@@ -54,7 +54,7 @@ class _SetupPinCodeScreenState extends State<SetupPinCodeScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/icon/ppc-icon-white-256.png',
+              'assets/icon/rdd-icon-white-256.png',
               width: 50,
             ),
             Text(

@@ -64,7 +64,7 @@ class _SetupScreenState extends State<SetupScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Image.asset(
-                          'assets/icon/ppc-icon-white-256.png',
+                          'assets/icon/rdd-icon-white-256.png',
                           width: 50,
                         ),
                         Text(

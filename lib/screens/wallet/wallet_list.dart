@@ -183,7 +183,7 @@ class _WalletListScreenState extends State<WalletListScreen>
                                   : 'https://apps.apple.com/us/app/reddcoin-wallet/id1571755170',
                             ),
                             child: Image.asset(
-                              'assets/icon/ppc-logo.png',
+                              'assets/icon/rdd-logo.png',
                             ),
                           ),
                         ),
