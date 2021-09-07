@@ -150,7 +150,7 @@ class _ImportPaperWalletScreenState extends State<ImportPaperWalletScreen> {
       _balanceLoading = false;
       _balanceInt = _totalValue;
       _balance =
-          '${(_totalValue / 1000000).toString()} ${_activeCoin.letterCode}';
+          '${(_totalValue / 100000000).toString()} ${_activeCoin.letterCode}';
     });
     moveStep(4);
   }
@@ -170,7 +170,7 @@ class _ImportPaperWalletScreenState extends State<ImportPaperWalletScreen> {
       await showDialog(
         context: context,
         builder: (_) {
-          final _displayValue = (_balanceInt - _requiredFee) / 1000000;
+          final _displayValue = (_balanceInt - _requiredFee) / 100000000;
           return SimpleDialog(
             title: Text(
               AppLocalizations.instance.translate('send_confirm_transaction'),
@@ -191,12 +191,12 @@ class _ImportPaperWalletScreenState extends State<ImportPaperWalletScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(AppLocalizations.instance.translate('send_fee', {
-                    'amount': '${_requiredFee / 1000000}',
+                    'amount': '${_requiredFee / 100000000}',
                     'letter_code': '${_activeCoin.letterCode}'
                   })),
                   Text(
                       AppLocalizations.instance.translate('send_total', {
-                        'amount': '${_balanceInt / 1000000}',
+                        'amount': '${_balanceInt / 100000000}',
                         'letter_code': '${_activeCoin.letterCode}'
                       }),
                       style: TextStyle(fontWeight: FontWeight.bold)),
@@ -268,7 +268,7 @@ class _ImportPaperWalletScreenState extends State<ImportPaperWalletScreen> {
 
     var number = ((intermediate.txSize) / 1000 * _activeCoin.feePerKb)
         .toStringAsFixed(_activeCoin.fractions);
-    var asDouble = double.parse(number) * 1000000;
+    var asDouble = double.parse(number) * 100000000;
     var requiredFeeInSatoshis = asDouble.toInt();
 
     if (dryRun == false) {

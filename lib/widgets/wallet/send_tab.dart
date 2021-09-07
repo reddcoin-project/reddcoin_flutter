@@ -116,17 +116,17 @@ class _SendTabState extends State<SendTab> {
         builder: (BuildContext context) {
           String? _displayValue = _amountKey.currentState!.value;
           _totalValue =
-              (double.parse(_amountKey.currentState!.value) * 1000000).toInt();
+              (double.parse(_amountKey.currentState!.value) * 100000000).toInt();
           if (_totalValue == _wallet.balance) {
             var newValue = double.parse(_amountKey.currentState!.value) -
-                (_txFee / 1000000);
+                (_txFee / 100000000);
             _displayValue = newValue.toStringAsFixed(_availableCoin.fractions);
           } else {
             _totalValue = _totalValue + _txFee;
           }
           if (_destroyedChange! > 0) {
             var newValue = (double.parse(_amountKey.currentState!.value) -
-                (_txFee / 1000000));
+                (_txFee / 100000000));
             _displayValue = newValue.toString();
             _totalValue = _totalValue - _txFee + _destroyedChange;
           }
@@ -159,20 +159,20 @@ class _SendTabState extends State<SendTab> {
                     ),
                     SizedBox(height: 10),
                     Text(AppLocalizations.instance.translate('send_fee', {
-                      'amount': '${_txFee / 1000000}',
+                      'amount': '${_txFee / 100000000}',
                       'letter_code': '${_wallet.letterCode}'
                     })),
                     if (_destroyedChange > 0)
                       Text(
                         AppLocalizations.instance.translate('send_dust', {
-                          'amount': '${_destroyedChange / 1000000}',
+                          'amount': '${_destroyedChange / 100000000}',
                           'letter_code': '${_wallet.letterCode}'
                         }),
                         style: TextStyle(color: Theme.of(context).errorColor),
                       ),
                     Text(
                         AppLocalizations.instance.translate('send_total', {
-                          'amount': '${_totalValue / 1000000}',
+                          'amount': '${_totalValue / 100000000}',
                           'letter_code': '${_wallet.letterCode}'
                         }),
                         style: TextStyle(fontWeight: FontWeight.bold)),
@@ -371,7 +371,7 @@ class _SendTabState extends State<SendTab> {
                           final convertedValue = value.replaceAll(',', '.');
                           amountController.text = convertedValue;
                           var txValueInSatoshis =
-                              (double.parse(convertedValue) * 1000000).toInt();
+                              (double.parse(convertedValue) * 100000000).toInt();
                           log('req value $txValueInSatoshis - ${_wallet.balance}');
                           if (convertedValue.contains('.') &&
                               convertedValue.split('.')[1].length >
@@ -388,7 +388,7 @@ class _SendTabState extends State<SendTab> {
                             return AppLocalizations.instance.translate(
                                 'send_amount_below_minimum', {
                               'amount':
-                                  '${_availableCoin.minimumTxValue / 1000000}'
+                                  '${_availableCoin.minimumTxValue / 100000000}'
                             });
                           }
                           if (txValueInSatoshis == _wallet.balance &&

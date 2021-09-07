@@ -64,7 +64,7 @@ class TransactionDetails extends StatelessWidget {
                 AppLocalizations.instance.translate('tx_value'),
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              SelectableText((_tx.value / 1000000).toString() +
+              SelectableText((_tx.value / 100000000).toString() +
                   ' ' +
                   _coinWallet.letterCode)
             ],
@@ -76,7 +76,7 @@ class TransactionDetails extends StatelessWidget {
               Text(AppLocalizations.instance.translate('tx_fee'),
                   style: TextStyle(fontWeight: FontWeight.bold)),
               SelectableText(
-                  (_tx.fee / 1000000).toString() + ' ' + _coinWallet.letterCode)
+                  (_tx.fee / 100000000).toString() + ' ' + _coinWallet.letterCode)
             ],
           ),
           Divider(),

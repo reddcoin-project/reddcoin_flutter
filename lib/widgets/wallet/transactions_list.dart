@@ -177,7 +177,7 @@ class _TransactionListState extends State<TransactionList> {
                                   (_filteredTx[i - 1].direction == 'in'
                                           ? '+'
                                           : '-') +
-                                      (_filteredTx[i - 1].value / 1000000)
+                                      (_filteredTx[i - 1].value / 100000000)
                                           .toString(),
                                   style: TextStyle(
                                     fontWeight:

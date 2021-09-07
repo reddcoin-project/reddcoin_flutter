@@ -82,7 +82,7 @@ class WalletBalanceHeader extends StatelessWidget {
                               width: 5,
                             ),
                             Text(
-                              '${_wallet.unconfirmedBalance / 1000000} ${_wallet.letterCode}',
+                              '${_wallet.unconfirmedBalance / 100000000} ${_wallet.letterCode}',
                               style: TextStyle(
                                 fontSize: 12,
                                 color: Colors.grey[300],

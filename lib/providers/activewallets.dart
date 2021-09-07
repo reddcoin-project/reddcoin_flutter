@@ -307,7 +307,7 @@ class ActiveWallets with ChangeNotifier {
                       .firstWhereOrNull((element) => element.address == addr) !=
                   null) {
                 //address is ours, add new tx
-                final txValue = (vOut['value'] * 1000000).toInt();
+                final txValue = (vOut['value'] * 100000000).toInt();
 
                 openWallet.putTransaction(WalletTransaction(
                   txid: tx['txid'],
@@ -436,7 +436,7 @@ class ActiveWallets with ChangeNotifier {
     bool dryRun = false,
   ]) async {
     //convert amount
-    var _txAmount = (double.parse(amount) * 1000000).toInt();
+    var _txAmount = (double.parse(amount) * 100000000).toInt();
     var openWallet = getSpecificCoinWallet(identifier);
     var _hex = '';
     var _destroyedChange = 0;
@@ -514,7 +514,7 @@ class ActiveWallets with ChangeNotifier {
         final intermediate = tx.build();
         var number = ((intermediate.txSize) / 1000 * coin.feePerKb)
             .toStringAsFixed(coin.fractions);
-        var asDouble = double.parse(number) * 1000000;
+        var asDouble = double.parse(number) * 100000000;
         var requiredFeeInSatoshis = asDouble.toInt();
         log('fee $requiredFeeInSatoshis, size: ${intermediate.txSize}');
         if (dryRun == false) {
