@@ -76,7 +76,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             )),
                             TextButton(
                                 onPressed: () => _launchURL(
-                                    'https://github.com/peercoin/peercoin_flutter/blob/main/LICENSE'),
+                                    'https://github.com/reddcoin-project/reddcoin_flutter/blob/main/LICENSE'),
                                 child: Text(
                                   AppLocalizations.instance
                                       .translate('about_license'),
@@ -88,7 +88,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             ),
                             TextButton(
                                 onPressed: () => _launchURL(
-                                    'https://github.com/peercoin/peercoin_flutter'),
+                                    'https://github.com/reddcoin-project/reddcoin_flutter'),
                                 child: Text(
                                   AppLocalizations.instance
                                       .translate('about_view_source'),
@@ -101,7 +101,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             ),
                             TextButton(
                               onPressed: () => _launchURL(
-                                  'https://github.com/peercoin/peercoin_flutter/blob/main/data_protection.md'),
+                                  'https://github.com/reddcoin-project/reddcoin_flutter/blob/main/data_protection.md'),
                               child: Text(
                                 AppLocalizations.instance
                                     .translate('about_data_declaration'),
