@@ -64,8 +64,8 @@ packages:
     description:
       path: "."
       ref: null_safety
-      resolved-ref: "429aaf7b89de06af88778fd1316512a73a4ab653"
-      url: "https://github.com/Vesta-wallet/bitcoin_flutter.git"
+      resolved-ref: "31eed84758665b82228a8030b5b77dd15bb7db10"
+      url: "https://github.com/reddcoin-project/bitcoin_flutter.git"
     source: git
     version: "3.0.0"
   boolean_selector:
