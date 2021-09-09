@@ -36,7 +36,7 @@ class ElectrumConnection with ChangeNotifier {
   late List _availableServers;
   late StreamSubscription _offlineSubscription;
   int _depthPointer = 1;
-  int _maxChainDepth = 5;
+  int _maxChainDepth = 2; // Addresses & Change
   int _maxAddressDepth = 0; //no address depth scan for now
   Map<String, int> _queryDepth = {'account': 0, 'chain': 0, 'address': 0};
 
