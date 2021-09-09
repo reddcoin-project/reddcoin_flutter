@@ -13,5 +13,6 @@ Features:
 - Import paper wallets.
 - Server management.
 - Multi-language support.
+- Bip44
 
 Known limitations can be found in the Github repository.

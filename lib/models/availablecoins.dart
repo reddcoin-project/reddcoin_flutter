@@ -10,6 +10,8 @@ class AvailableCoins {
       letterCode: 'RDD',
       iconPath: 'assets/icon/rdd-icon-48.png',
       iconPathTransparent: 'assets/icon/rdd-icon-white-48.png',
+      bip44: 44,
+      coinType: 4,
       networkType: NetworkType(
         messagePrefix: '\x18Reddcoin Signed Message:\n',
         bech32: 'rc',
@@ -32,6 +34,8 @@ class AvailableCoins {
       letterCode: 'tRDD',
       iconPath: 'assets/icon/rdd-icon-48.png',
       iconPathTransparent: 'assets/icon/rdd-icon-white-48.png',
+      bip44: 44,
+      coinType: 1,
       networkType: NetworkType(
         messagePrefix: '\x18Reddcoin Signed Message:\n',
         bech32: 'trc',
