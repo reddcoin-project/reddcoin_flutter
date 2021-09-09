@@ -10,10 +10,10 @@ This app **stores all necessary data locally** on your device.
 There is **no analytics**- **or advertising** software inside.
 
 **Optional Price Ticker**  
-The price ticker for PPC and FIAT exchange rates can be enabled or disabled optionally during setup or in "App Settings."
+The price ticker for RDD and FIAT exchange rates can be enabled or disabled optionally during setup or in "App Settings."
 
 The ticker is hosted as a "Cloudflare Worker" on Cloudflare.  
 Cloudflare Privacy Policy: https://www.cloudflare.com/privacypolicy/
 
 Ticker source code: 
-https://github.com/bananenwilly/ppc-worker-ticker
+https://github.com/reddcoin-project/rdd-worker-ticker

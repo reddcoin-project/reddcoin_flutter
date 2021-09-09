@@ -266,7 +266,7 @@ class _ReceiveTabState extends State<ReceiveTab> {
                           text: AppLocalizations.instance
                               .translate('receive_faucet'),
                           action: () {
-                            launchURL('https://ppc.lol/faucet/');
+                            launchURL('https://rdd.lol/faucet/');
                           },
                         ),
                       ],
@@ -290,14 +290,14 @@ class _ReceiveTabState extends State<ReceiveTab> {
                           text: AppLocalizations.instance
                               .translate('receive_website_credit'),
                           action: () {
-                            launchURL('https://ppc.lol/buy');
+                            launchURL('https://rdd.lol/buy');
                           },
                         ),
                         PeerButton(
                           text: AppLocalizations.instance
                               .translate('receive_website_exchandes'),
                           action: () {
-                            launchURL('https://ppc.lol/exchanges');
+                            launchURL('https://rdd.lol/exchanges');
                           },
                         ),
                       ],

@@ -115,7 +115,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             ),
                             TextButton(
                               onPressed: () => _launchURL(
-                                  'https://www.peercoin.net/foundation'),
+                                  'https://www.reddcoin.com/foundation'),
                               child: Text(
                                 AppLocalizations.instance
                                     .translate('about_foundation_button'),
@@ -129,7 +129,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             ),
                             TextButton(
                               onPressed: () async =>
-                                  _launchURL('https://weblate.ppc.lol'),
+                                  _launchURL('https://weblate.rdd.lol'),
                               child: Text(
                                 AppLocalizations.instance
                                     .translate('about_go_weblate'),
