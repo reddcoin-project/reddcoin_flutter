@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MyTheme {
-
   static Map<ThemeMode, ThemeData> appThemes = {
     ThemeMode.light: ThemeData(
       colorScheme: ColorScheme(
@@ -20,7 +19,8 @@ class MyTheme {
         brightness: Brightness.light,
       ),
       backgroundColor: LightColors.white,
-      bottomAppBarColor: const Color(0xFF2A7A3A), //Incoming transaction: amount color
+      bottomAppBarColor:
+          const Color(0xFF2A7A3A), //Incoming transaction: amount color
       cardColor: LightColors.white,
       dialogBackgroundColor: LightColors.white,
       disabledColor: LightColors.lightBlue,
@@ -34,14 +34,12 @@ class MyTheme {
 
       textTheme: TextTheme(
         button: TextStyle(
-            letterSpacing: 1.4,
-            fontSize: 16,
-            color: DarkColors.white
-        ),
+            letterSpacing: 1.4, fontSize: 16, color: DarkColors.white),
       ),
 
       dialogTheme: DialogTheme(
-        shape: RoundedRectangleBorder( //to set border radius to button
+        shape: RoundedRectangleBorder(
+          //to set border radius to button
           borderRadius: BorderRadius.circular(10),
         ),
       ),
@@ -49,7 +47,8 @@ class MyTheme {
         elevation: 2,
         color: LightColors.white,
         margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
-        shape: RoundedRectangleBorder( //to set border radius to button
+        shape: RoundedRectangleBorder(
+          //to set border radius to button
           borderRadius: BorderRadius.circular(10),
         ),
       ),
@@ -66,7 +65,6 @@ class MyTheme {
           )
       ),
     ),
-
     ThemeMode.dark: ThemeData.dark().copyWith(
       colorScheme: ColorScheme(
         primary: DarkColors.blue,
@@ -108,14 +106,12 @@ class MyTheme {
         bodyText1: TextStyle(color: DarkColors.white),
         bodyText2: TextStyle(color: DarkColors.white),
         button: TextStyle(
-            letterSpacing: 1.4,
-            fontSize: 16,
-            color: DarkColors.white
-        ),
+            letterSpacing: 1.4, fontSize: 16, color: DarkColors.white),
       ),
 
       dialogTheme: DialogTheme(
-        shape: RoundedRectangleBorder( //to set border radius to button
+        shape: RoundedRectangleBorder(
+          //to set border radius to button
           borderRadius: BorderRadius.circular(10),
         ),
       ),
@@ -123,7 +119,8 @@ class MyTheme {
         elevation: 2,
         color: DarkColors.blue,
         margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
-        shape: RoundedRectangleBorder( //to set border radius to button
+        shape: RoundedRectangleBorder(
+          //to set border radius to button
           borderRadius: BorderRadius.circular(10),
         ),
       ),
@@ -135,9 +132,8 @@ class MyTheme {
       ),
       textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
-            primary: DarkColors.black,
-          )
-      ),
+        primary: DarkColors.black,
+      )),
       inputDecorationTheme: InputDecorationTheme(
         labelStyle: TextStyle(color: DarkColors.grey),
         focusedBorder: UnderlineInputBorder(
@@ -154,7 +150,7 @@ class MyTheme {
     return appThemes[mode] ?? appThemes[ThemeMode.light]!;
   }
 
-  static MaterialColor materialColor(Color color){
+  static MaterialColor materialColor(Color color) {
     return MaterialColor(
       color.value,
       <int, Color>{

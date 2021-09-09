@@ -227,7 +227,8 @@ class _TransactionListState extends State<TransactionList> {
                                   AppLocalizations.instance
                                       .translate('transactions_in'),
                                   style: TextStyle(
-                                    color: Theme.of(context).colorScheme.secondary,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 )),
                                 selected: _filterChoice == 'in',
@@ -243,7 +244,9 @@ class _TransactionListState extends State<TransactionList> {
                                     AppLocalizations.instance
                                         .translate('transactions_all'),
                                     style: TextStyle(
-                                      color: Theme.of(context).colorScheme.secondary,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
                                     )),
                                 selected: _filterChoice == 'all',
                                 onSelected: (_) => _handleSelect('all'),
@@ -258,7 +261,9 @@ class _TransactionListState extends State<TransactionList> {
                                     AppLocalizations.instance
                                         .translate('transactions_out'),
                                     style: TextStyle(
-                                      color: Theme.of(context).colorScheme.secondary,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
                                     )),
                                 selected: _filterChoice == 'out',
                                 onSelected: (_) => _handleSelect('out'),
