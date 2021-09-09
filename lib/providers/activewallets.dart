@@ -47,6 +47,14 @@ class ActiveWallets with ChangeNotifier {
     _unusedAddress = newAddr;
     notifyListeners();
   }
+  
+  String getRootDerivationPath(String identifier) {
+    var hardened = "'";
+    var coin = AvailableCoins().getSpecificCoin(identifier);
+    var purpose = coin.bip44;
+    var coinType = coin.coinType;
+    return 'm/$purpose$hardened/$coinType$hardened';
+  }
 
   Uint8List seedPhraseUint8List(String words) {
     return bip39.mnemonicToSeed(words);
@@ -97,10 +105,14 @@ class ActiveWallets with ChangeNotifier {
     );
 
     if (master == true) {
-      return hdWallet.address;
+      var derivePath = "${getRootDerivationPath(identifier)}/$account'/$chain/$address";
+      log('Derived Master Path: $derivePath');
+
+      return hdWallet.derivePath(derivePath).address;
+      // return hdWallet.address;
     } else {
-      var derivePath = "m/$account'/$chain/$address";
-      log(derivePath);
+      var derivePath = "${getRootDerivationPath(identifier)}/$account'/$chain/$address";
+      log('Derived Path: $derivePath');
 
       return hdWallet.derivePath(derivePath).address;
     }
@@ -115,15 +127,18 @@ class ActiveWallets with ChangeNotifier {
     );
     if (openWallet.addresses.isEmpty) {
       //generate new address
+      var derivePath = "${getRootDerivationPath(identifier)}/0'/0/0";
+      log('Derived Root Path: $derivePath');
+      var newHdWallet = hdWallet.derivePath(derivePath);
       openWallet.addNewAddress = WalletAddress(
-        address: hdWallet.address!,
+        address: newHdWallet.address!,
         addressBookName: '',
         used: false,
         status: null,
         isOurs: true,
-        wif: hdWallet.wif,
+        wif: newHdWallet.wif,
       );
-      unusedAddress = hdWallet.address!;
+      unusedAddress = newHdWallet.address!;
     } else {
       //wallet is not brand new, lets find an unused address
       var unusedAddr;
@@ -140,7 +155,8 @@ class ActiveWallets with ChangeNotifier {
         var numberOfOurAddr = openWallet.addresses
             .where((element) => element.isOurs == true)
             .length;
-        var derivePath = "m/0'/$numberOfOurAddr/0";
+        var derivePath = "${getRootDerivationPath(identifier)}/0'/0/$numberOfOurAddr";
+        log('Derived Path: $derivePath');
         var newHdWallet = hdWallet.derivePath(derivePath);
 
         final res = openWallet.addresses.firstWhereOrNull(
@@ -149,7 +165,8 @@ class ActiveWallets with ChangeNotifier {
         if (res != null) {
           //next addr in derivePath is already used for some reason
           numberOfOurAddr++;
-          derivePath = "m/0'/$numberOfOurAddr/0";
+          derivePath = "${getRootDerivationPath(identifier)}/0'/0/$numberOfOurAddr";
+          log('Derived Path: $derivePath');
           newHdWallet = hdWallet.derivePath(derivePath);
         }
 
@@ -413,7 +430,9 @@ class ActiveWallets with ChangeNotifier {
         );
 
         for (var i = 0; i <= openWallet.addresses.length; i++) {
-          final child = hdWallet.derivePath("m/0'/$i/0");
+          var derivePath = "$getRootDerivationPath()/0'/0/$i";
+          log('Derived Path: $derivePath');
+          final child = hdWallet.derivePath(derivePath);
           _wifs[child.address] = child.wif;
         }
         _wifs[hdWallet.address] = hdWallet.wif;
