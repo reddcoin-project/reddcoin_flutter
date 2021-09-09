@@ -1,4 +1,4 @@
-[![Reddcoin Donate](https://badgen.net/badge/reddcoin/Donate/green?icon=https://raw.githubusercontent.com/reddcoin/media/84710cca6c3c8d2d79676e5260cc8d1cd729a427/Reddcoin%202020%20Logo%20Files/01.%20Icon%20Only/Inside%20Circle/Transparent/Green%20Icon/reddcoin-icon-green-transparent.svg)](https://chainz.cryptoid.info/rdd/address.dws?p92W3t7YkKfQEPDb7cG9jQ6iMh7cpKLvwK)
+[![Reddcoin Donate](https://badgen.net/badge/reddcoin/Donate/green?icon=https://raw.githubusercontent.com/reddcoin-project/reddcoin_flutter/Reddcoin/assets/media/R-Graphic-CLR.svg)](https://live.reddcoin.com/address/RaWe7UEQ1p2PYmdwbCxAThrq4GucNh3Q6s)
 <a href="https://weblate.rdd.lol/engage/reddcoin-flutter/">
 <img src="https://weblate.rdd.lol/widgets/reddcoin-flutter/-/translations/svg-badge.svg" alt="Übersetzungsstatus" /></a>
 [![Codemagic build status](https://api.codemagic.io/apps/613966bcd1095a40b9432606/613966bcd1095a40b9432605/status_badge.svg)](https://codemagic.io/apps/613966bcd1095a40b9432606/613966bcd1095a40b9432605/latest_build)
