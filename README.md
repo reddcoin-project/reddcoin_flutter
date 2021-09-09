@@ -41,7 +41,7 @@ You can also sign up for our open beta testing here:
 
 ## Development
 This repository currently relies on a fork of bitcoin_flutter, which can be found here: 
-[reddcoin/bitcoin_flutter](https://github.com/reddcoin/bitcoin_flutter "github.com/reddcoin/bitcoin_flutter")
+[reddcoin/bitcoin_flutter](https://github.com/reddcoin-project/bitcoin_flutter "github.com/reddcoin/bitcoin_flutter")
 
 The original library is not compatible, due to transaction timestamp incompability. 
 
