@@ -27,7 +27,7 @@ You can also sign up for our open beta testing here:
 * [Android](https://play.google.com/apps/testing/com.coinerella.reddcoin)
 * [iOS](https://testflight.apple.com/join/iilc4SvQ)
 
-![Screenshot_small](https://user-images.githubusercontent.com/11148913/124509449-470f7c80-ddd2-11eb-9daf-56de7eb83594.png)
+![Screenshot_small](![Screenshot_1630990930](https://user-images.githubusercontent.com/10765021/132613437-1fb9fb2e-1ba5-4eed-8c70-20169143e1aa.png))
 
 ## Help Translate
 <a href="https://weblate.rdd.lol/engage/reddcoin-flutter/">
