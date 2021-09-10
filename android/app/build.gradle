@@ -43,7 +43,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.coinerella.reddcoin"
+        applicationId "com.reddcoin.reddcoin"
         minSdkVersion 20
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()

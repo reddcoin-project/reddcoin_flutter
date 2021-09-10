@@ -148,8 +148,8 @@ class MyTheme {
 }
 
 abstract class LightColors {
-  static Color get green => const Color(0xff3cb054);
-  static Color get lightGreen => const Color(0xffB3E5BD);
+  static Color get green => const Color(0xff008FC5);
+  static Color get lightGreen => const Color(0xffb2dded);
   static Color get black => const Color(0xFF000000);
   static Color get grey => const Color(0xFF717C89);
   static Color get white => const Color(0xFFFDFFFC);

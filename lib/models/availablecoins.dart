@@ -23,7 +23,7 @@ class AvailableCoins {
       fractions: 8,
       minimumTxValue: 10000,
       feePerKb: 0.01,
-      explorerTxDetailUrl: 'https://blockbook.reddcoin.net/tx/',
+      explorerTxDetailUrl: 'https://live.reddcoin.com/tx/',
       genesisHash:
           'b868e0d95a3c3c0e0dadc67ee587aaf9dc8acbf99e3b4b3110fad4eb74c1decc',
     ),
@@ -47,7 +47,7 @@ class AvailableCoins {
       fractions: 8,
       minimumTxValue: 10000,
       feePerKb: 0.01,
-      explorerTxDetailUrl: 'https://tblockbook.reddcoin.net/tx/',
+      explorerTxDetailUrl: 'https://live.reddcoin.com/tx/',
       genesisHash:
           'a12ac9bd4cd26262c53a6277aafc61fe9dfe1e2b05eaa1ca148a5be8b394e35a',
     ),

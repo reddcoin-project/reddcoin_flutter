@@ -59,12 +59,12 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.1
   flutter_native_splash: ^1.1.8+4
   
-flutter_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/icon/rdd-icon.png"
-  image_path_ios: "assets/icon/rdd-ios-app-xxl.png"
-  remove_alpha_ios: true
+#flutter_icons:
+#  #android: "launcher_icon"
+#  ios: true
+#  image_path: "assets/icon/rdd-icon.png"
+#  image_path_ios: "assets/icon/rdd-ios-app-xxl.png"
+#  remove_alpha_ios: true
 
 flutter_launcher_name:
   name: "Reddcoin"
