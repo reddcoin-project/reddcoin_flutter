@@ -35,9 +35,9 @@ class ElectrumConnection with ChangeNotifier {
   int _connectionAttempt = 0;
   late List _availableServers;
   late StreamSubscription _offlineSubscription;
-  int _depthPointer = 1;
-  int _maxChainDepth = 2; // Addresses & Change
-  int _maxAddressDepth = 0; //no address depth scan for now
+  int _depthPointer = 2;
+  int _maxChainDepth = 0; // Addresses & Change
+  int _maxAddressDepth = 1; //no address depth scan for now
   Map<String, int> _queryDepth = {'account': 0, 'chain': 0, 'address': 0};
 
   ElectrumConnection(this._activeWallets, this._servers);
@@ -174,9 +174,9 @@ class ElectrumConnection with ChangeNotifier {
     _scanMode = false;
     _paperWalletUtxos = {};
     _queryDepth = {'account': 0, 'chain': 0, 'address': 0};
-    _maxChainDepth = 5;
-    _maxAddressDepth = 0; //no address depth scan for now
-    _depthPointer = 1;
+    _maxChainDepth = 0;
+    _maxAddressDepth = 1; //no address depth scan for now
+    _depthPointer = 2;
 
     if (_closedIntentionally == false) {
       _reconnectTimer = Timer(Duration(seconds: 5),
