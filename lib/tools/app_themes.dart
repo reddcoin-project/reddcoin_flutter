@@ -5,17 +5,17 @@ class MyTheme {
   static Map<ThemeMode, ThemeData> appThemes = {
     ThemeMode.light: ThemeData(
       colorScheme: ColorScheme(
-        primary: LightColors.green,
-        primaryVariant: LightColors.green,
+        primary: LightColors.blue,
+        primaryVariant: LightColors.blue,
         secondary: LightColors.grey,
         secondaryVariant: LightColors.grey,
         surface: LightColors.white,
         background: LightColors.grey,
         error: LightColors.red,
         onPrimary: LightColors.white,
-        onSecondary: LightColors.green,
-        onSurface: LightColors.green,
-        onBackground: LightColors.green,
+        onSecondary: LightColors.blue,
+        onSurface: LightColors.blue,
+        onBackground: LightColors.blue,
         onError: LightColors.red,
         brightness: Brightness.light,
       ),
@@ -23,13 +23,13 @@ class MyTheme {
       bottomAppBarColor: const Color(0xFF2A7A3A), //Incoming transaction: amount color
       cardColor: LightColors.white,
       dialogBackgroundColor: LightColors.white,
-      disabledColor: LightColors.lightGreen,
+      disabledColor: LightColors.lightBlue,
       errorColor: LightColors.red,
-      focusColor: LightColors.green,
+      focusColor: LightColors.blue,
       hintColor: LightColors.grey,
-      primaryColor: LightColors.green,
+      primaryColor: LightColors.blue,
       primarySwatch: materialColor(LightColors.grey),
-      shadowColor: LightColors.lightGreen,
+      shadowColor: LightColors.lightBlue,
       unselectedWidgetColor: LightColors.grey,
 
       textTheme: TextTheme(
@@ -55,44 +55,44 @@ class MyTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          primary: LightColors.green,
-          onPrimary: LightColors.green,
+          primary: LightColors.blue,
+          onPrimary: LightColors.blue,
           textStyle: TextStyle(color: LightColors.white,)
         ),
       ),
       textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
-            primary: LightColors.green,
+            primary: LightColors.blue,
           )
       ),
     ),
 
     ThemeMode.dark: ThemeData.dark().copyWith(
       colorScheme: ColorScheme(
-        primary: DarkColors.green,
-        primaryVariant: DarkColors.green,
+        primary: DarkColors.blue,
+        primaryVariant: DarkColors.blue,
         secondary: DarkColors.white,
         secondaryVariant: DarkColors.white,
         surface: DarkColors.black,
-        background: DarkColors.green,
+        background: DarkColors.blue,
         error: DarkColors.red,
-        onPrimary: DarkColors.green,
-        onSecondary: DarkColors.green,
+        onPrimary: DarkColors.blue,
+        onSecondary: DarkColors.blue,
         onSurface: DarkColors.white,
-        onBackground: DarkColors.green,
+        onBackground: DarkColors.blue,
         onError: DarkColors.red,
         brightness: Brightness.dark,
       ),
-      backgroundColor: DarkColors.green,
+      backgroundColor: DarkColors.blue,
       bottomAppBarColor: DarkColors.darkBlue, //Incoming transaction: amount color
-      cardColor: DarkColors.green,
-      dialogBackgroundColor: DarkColors.green,
+      cardColor: DarkColors.blue,
+      dialogBackgroundColor: DarkColors.blue,
       disabledColor: DarkColors.darkBlue,
       errorColor: DarkColors.red,
       focusColor: DarkColors.black,
       hintColor: DarkColors.white,
       primaryColor: DarkColors.black,
-      scaffoldBackgroundColor: DarkColors.green,
+      scaffoldBackgroundColor: DarkColors.blue,
       shadowColor: DarkColors.darkBlue,
       unselectedWidgetColor: DarkColors.grey,
 
@@ -121,7 +121,7 @@ class MyTheme {
       ),
       cardTheme: CardTheme(
         elevation: 2,
-        color: DarkColors.green,
+        color: DarkColors.blue,
         margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
         shape: RoundedRectangleBorder( //to set border radius to button
           borderRadius: BorderRadius.circular(10),
@@ -174,8 +174,8 @@ class MyTheme {
 }
 
 abstract class LightColors {
-  static Color get green => const Color(0xff008FC5);
-  static Color get lightGreen => const Color(0xffb2dded);
+  static Color get blue => const Color(0xff008FC5);
+  static Color get lightBlue => const Color(0xffb2dded);
   static Color get black => const Color(0xFF000000);
   static Color get grey => const Color(0xFF717C89);
   static Color get white => const Color(0xFFFDFFFC);
@@ -184,7 +184,7 @@ abstract class LightColors {
 }
 
 abstract class DarkColors {
-  static Color get green => const Color(0xFF2D936C);
+  static Color get blue => const Color(0xFF00729d);
   static Color get black => const Color(0xFF0D1821);
   static Color get darkBlue => const Color(0xFF234058);
   static Color get grey => const Color(0xFFE9EAED);
