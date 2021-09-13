@@ -5,7 +5,7 @@ class MyTheme {
   static Map<ThemeMode, ThemeData> appThemes = {
     ThemeMode.light: ThemeData(
 
-      accentColor: LightColors.grey,
+      colorScheme.secondary: LightColors.grey,
       backgroundColor: LightColors.white,
       bottomAppBarColor: const Color(0xFF2A7A3A), //Incoming transaction: amount color
       cardColor: LightColors.white,
@@ -56,7 +56,7 @@ class MyTheme {
 
     ThemeMode.dark: ThemeData.dark().copyWith(
 
-      accentColor: DarkColors.white,
+      colorScheme.secondary: DarkColors.white,
       backgroundColor: DarkColors.green,
       bottomAppBarColor: DarkColors.darkBlue, //Incoming transaction: amount color
       cardColor: DarkColors.green,
