@@ -4,8 +4,21 @@ class MyTheme {
 
   static Map<ThemeMode, ThemeData> appThemes = {
     ThemeMode.light: ThemeData(
-
-      colorScheme.secondary: LightColors.grey,
+      colorScheme: ColorScheme(
+        primary: LightColors.green,
+        primaryVariant: LightColors.green,
+        secondary: LightColors.grey,
+        secondaryVariant: LightColors.grey,
+        surface: LightColors.white,
+        background: LightColors.grey,
+        error: LightColors.red,
+        onPrimary: LightColors.white,
+        onSecondary: LightColors.green,
+        onSurface: LightColors.green,
+        onBackground: LightColors.green,
+        onError: LightColors.red,
+        brightness: Brightness.light,
+      ),
       backgroundColor: LightColors.white,
       bottomAppBarColor: const Color(0xFF2A7A3A), //Incoming transaction: amount color
       cardColor: LightColors.white,
@@ -55,8 +68,21 @@ class MyTheme {
     ),
 
     ThemeMode.dark: ThemeData.dark().copyWith(
-
-      colorScheme.secondary: DarkColors.white,
+      colorScheme: ColorScheme(
+        primary: DarkColors.green,
+        primaryVariant: DarkColors.green,
+        secondary: DarkColors.white,
+        secondaryVariant: DarkColors.white,
+        surface: DarkColors.black,
+        background: DarkColors.green,
+        error: DarkColors.red,
+        onPrimary: DarkColors.green,
+        onSecondary: DarkColors.green,
+        onSurface: DarkColors.white,
+        onBackground: DarkColors.green,
+        onError: DarkColors.red,
+        brightness: Brightness.dark,
+      ),
       backgroundColor: DarkColors.green,
       bottomAppBarColor: DarkColors.darkBlue, //Incoming transaction: amount color
       cardColor: DarkColors.green,
