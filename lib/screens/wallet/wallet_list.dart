@@ -5,7 +5,6 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import 'package:reddcoin/providers/appsettings.dart';
-import 'package:reddcoin/screens/changelog.dart';
 import 'package:reddcoin/tools/app_localizations.dart';
 import 'package:reddcoin/models/availablecoins.dart';
 import 'package:reddcoin/models/coinwallet.dart';
