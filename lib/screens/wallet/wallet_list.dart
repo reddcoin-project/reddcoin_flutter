@@ -3,7 +3,9 @@ import 'dart:io';
 
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
+import 'package:package_info/package_info.dart';
 import 'package:reddcoin/providers/appsettings.dart';
+import 'package:reddcoin/screens/changelog.dart';
 import 'package:reddcoin/tools/app_localizations.dart';
 import 'package:reddcoin/models/availablecoins.dart';
 import 'package:reddcoin/models/coinwallet.dart';
@@ -52,16 +54,28 @@ class _WalletListScreenState extends State<WalletListScreen>
     await _appSettings.init(); //only required in home widget
     await _activeWallets.init();
     if (_initial) {
-      //check if we just finished a scan
-      var fromScan = false;
-      if (ModalRoute.of(context)?.settings.arguments != null) {
-        var map = ModalRoute.of(context)!.settings.arguments as Map;
-        fromScan = map['fromScan'] ?? false;
+      //toggle price ticker update if enabled in settings
+      if (_appSettings.selectedCurrency.isNotEmpty) {
+        PriceTicker.checkUpdate(_appSettings);
+        //start timer to update data hourly
+        _priceTimer = Timer.periodic(
+          const Duration(hours: 1),
+          (_) {
+            PriceTicker.checkUpdate(_appSettings);
+          },
+        );
       }
+      //toggle check for "whats new" changelog
+      var _packageInfo = await PackageInfo.fromPlatform();
+      if (_packageInfo.buildNumber != _appSettings.buildIdentifier) {
+        await Navigator.of(context).pushNamed(Routes.ChangeLog);
+        _appSettings.setBuildIdentifier(_packageInfo.buildNumber);
+      }
+
       if (widget.fromColdStart == true &&
           _appSettings.authenticationOptions!['walletList']!) {
         await Auth.requireAuth(context, _appSettings.biometricsAllowed);
-      } else if (fromScan == false) {
+      } else {
         //push to default wallet
         final values = await _activeWallets.activeWalletsValues;
         if (values.length == 1) {
@@ -96,17 +110,7 @@ class _WalletListScreenState extends State<WalletListScreen>
           }
         }
       }
-      //toggle price ticker update if enabled in settings
-      if (_appSettings.selectedCurrency.isNotEmpty) {
-        PriceTicker.checkUpdate(_appSettings);
-        //start timer to update data hourly
-        _priceTimer = Timer.periodic(
-          const Duration(hours: 1),
-          (_) {
-            PriceTicker.checkUpdate(_appSettings);
-          },
-        );
-      }
+
       setState(() {
         _initial = false;
       });
