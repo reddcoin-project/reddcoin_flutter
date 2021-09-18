@@ -52,11 +52,16 @@ class _WalletListScreenState extends State<WalletListScreen>
     await _appSettings.init(); //only required in home widget
     await _activeWallets.init();
     if (_initial) {
-      if (widget.fromColdStart == false) {
-        if (_appSettings.authenticationOptions!['walletList']!) {
-          await Auth.requireAuth(context, _appSettings.biometricsAllowed);
-        }
-      } else {
+      //check if we just finished a scan
+      var fromScan = false;
+      if (ModalRoute.of(context)?.settings.arguments != null) {
+        var map = ModalRoute.of(context)!.settings.arguments as Map;
+        fromScan = map['fromScan'] ?? false;
+      }
+      if (widget.fromColdStart == true &&
+          _appSettings.authenticationOptions!['walletList']!) {
+        await Auth.requireAuth(context, _appSettings.biometricsAllowed);
+      } else if (fromScan == false) {
         //push to default wallet
         final values = await _activeWallets.activeWalletsValues;
         if (values.length == 1) {
