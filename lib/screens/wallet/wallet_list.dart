@@ -52,22 +52,16 @@ class _WalletListScreenState extends State<WalletListScreen>
     await _appSettings.init(); //only required in home widget
     await _activeWallets.init();
     if (_initial) {
-      if (widget.fromColdStart == false) {
-        if (_appSettings.authenticationOptions!['walletList']!) {
-          await Auth.requireAuth(context, _appSettings.biometricsAllowed);
-        }
-      } else {
-        //toggle price ticker update if enabled in settings
-        if (_appSettings.selectedCurrency.isNotEmpty) {
-          PriceTicker.checkUpdate(_appSettings);
-          //start timer to update data hourly
-          _priceTimer = Timer.periodic(
-            const Duration(hours: 1),
-            (_) {
-              PriceTicker.checkUpdate(_appSettings);
-            },
-          );
-        }
+      //check if we just finished a scan
+      var fromScan = false;
+      if (ModalRoute.of(context)?.settings.arguments != null) {
+        var map = ModalRoute.of(context)!.settings.arguments as Map;
+        fromScan = map['fromScan'] ?? false;
+      }
+      if (widget.fromColdStart == true &&
+          _appSettings.authenticationOptions!['walletList']!) {
+        await Auth.requireAuth(context, _appSettings.biometricsAllowed);
+      } else if (fromScan == false) {
         //push to default wallet
         final values = await _activeWallets.activeWalletsValues;
         if (values.length == 1) {
@@ -101,6 +95,17 @@ class _WalletListScreenState extends State<WalletListScreen>
             });
           }
         }
+      }
+      //toggle price ticker update if enabled in settings
+      if (_appSettings.selectedCurrency.isNotEmpty) {
+        PriceTicker.checkUpdate(_appSettings);
+        //start timer to update data hourly
+        _priceTimer = Timer.periodic(
+          const Duration(hours: 1),
+          (_) {
+            PriceTicker.checkUpdate(_appSettings);
+          },
+        );
       }
       setState(() {
         _initial = false;
@@ -179,7 +184,7 @@ class _WalletListScreenState extends State<WalletListScreen>
                           child: GestureDetector(
                             onTap: () => Share.share(
                               Platform.isAndroid
-                                  ? 'https://play.google.com/store/apps/details?id=com.reddcoin.reddcoin'
+                                  ? 'https://play.google.com/store/apps/details?id=com.reddcoin.reddcoin_flutter'
                                   : 'https://apps.apple.com/us/app/reddcoin-wallet/id1571755170',
                             ),
                             child: Image.asset(

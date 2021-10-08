@@ -1,4 +1,4 @@
-package com.reddcoin.reddcoin
+package com.reddcoin.reddcoin_flutter
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.FlutterEngine

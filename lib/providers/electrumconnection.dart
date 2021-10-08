@@ -35,9 +35,9 @@ class ElectrumConnection with ChangeNotifier {
   int _connectionAttempt = 0;
   late List _availableServers;
   late StreamSubscription _offlineSubscription;
-  int _depthPointer = 1;
-  int _maxChainDepth = 2; // Addresses & Change
-  int _maxAddressDepth = 0; //no address depth scan for now
+  int _depthPointer = 2;
+  int _maxChainDepth = 0; // Addresses & Change
+  int _maxAddressDepth = 1; //no address depth scan for now
   Map<String, int> _queryDepth = {'account': 0, 'chain': 0, 'address': 0};
 
   ElectrumConnection(this._activeWallets, this._servers);
@@ -174,9 +174,9 @@ class ElectrumConnection with ChangeNotifier {
     _scanMode = false;
     _paperWalletUtxos = {};
     _queryDepth = {'account': 0, 'chain': 0, 'address': 0};
-    _maxChainDepth = 5;
-    _maxAddressDepth = 0; //no address depth scan for now
-    _depthPointer = 1;
+    _maxChainDepth = 0;
+    _maxAddressDepth = 1; //no address depth scan for now
+    _depthPointer = 2;
 
     if (_closedIntentionally == false) {
       _reconnectTimer = Timer(Duration(seconds: 5),
@@ -293,10 +293,16 @@ class ElectrumConnection with ChangeNotifier {
         await subscribeNextDerivedAddress();
       } else {
         //increase depth because we found one != null
-        if (_depthPointer == 1) {
-          //chain pointer
-          _maxChainDepth++;
-        } else if (_depthPointer == 2) {
+        // if (_depthPointer == 1) {
+        //   //chain pointer
+        //   _maxChainDepth++;
+        // } else
+        if (_depthPointer == 2) {
+          //increase address pointer
+          var currentPointer = _queryDepth.keys.toList()[_depthPointer];
+          var _number = _queryDepth[currentPointer] as int;
+          _queryDepth[currentPointer] = _number + 1;
+          log('$_queryDepth');
           //address pointer
           _maxAddressDepth++;
         }
@@ -332,8 +338,9 @@ class ElectrumConnection with ChangeNotifier {
       var _number = _queryDepth[currentPointer] as int;
       _queryDepth[currentPointer] = _number + 1;
     } else if (_depthPointer < _queryDepth.keys.length - 1) {
-      log('move pointer');
+      log('move pointer ${currentPointer} = 0');
       _queryDepth[currentPointer] = 0;
+      log('$_queryDepth');
       _depthPointer++;
       await subscribeNextDerivedAddress();
     }
