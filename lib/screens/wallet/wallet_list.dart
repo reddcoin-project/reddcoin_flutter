@@ -184,7 +184,7 @@ class _WalletListScreenState extends State<WalletListScreen>
                           child: GestureDetector(
                             onTap: () => Share.share(
                               Platform.isAndroid
-                                  ? 'https://play.google.com/store/apps/details?id=com.reddcoin.reddcoin'
+                                  ? 'https://play.google.com/store/apps/details?id=com.reddcoin.reddcoin_flutter'
                                   : 'https://apps.apple.com/us/app/reddcoin-wallet/id1571755170',
                             ),
                             child: Image.asset(

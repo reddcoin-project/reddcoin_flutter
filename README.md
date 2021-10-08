@@ -11,11 +11,11 @@ Basic testing successfull on iOS 14.4 and Android 10.
 
 
 <p align="center">
-     <a href="https://f-droid.org/packages/com.reddcoin.reddcoin/">
+     <a href="https://f-droid.org/packages/com.reddcoin.reddcoin_flutter/">
 <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
      height="80"></a>
-<a href="https://play.google.com/store/apps/details?id=com.reddcoin.reddcoin"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+<a href="https://play.google.com/store/apps/details?id=com.reddcoin.reddcoin_flutter"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
      alt="Get it on Google Play" height="80"></a>
 </p>
 <p align="center">
@@ -24,7 +24,7 @@ Basic testing successfull on iOS 14.4 and Android 10.
 
 You can also sign up for our open beta testing here:
 
-* [Android](https://play.google.com/apps/testing/com.reddcoin.reddcoin)
+* [Android](https://play.google.com/apps/testing/com.reddcoin.reddcoin_flutter)
 * [iOS](https://testflight.apple.com/join/iilc4SvQ)
 
 ![Screenshot_scaled](https://user-images.githubusercontent.com/17320471/132971293-6875b792-6638-424e-86be-eb6a3468ab1f.png)
