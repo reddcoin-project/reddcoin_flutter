@@ -293,10 +293,16 @@ class ElectrumConnection with ChangeNotifier {
         await subscribeNextDerivedAddress();
       } else {
         //increase depth because we found one != null
-        if (_depthPointer == 1) {
-          //chain pointer
-          _maxChainDepth++;
-        } else if (_depthPointer == 2) {
+        // if (_depthPointer == 1) {
+        //   //chain pointer
+        //   _maxChainDepth++;
+        // } else
+        if (_depthPointer == 2) {
+          //increase address pointer
+          var currentPointer = _queryDepth.keys.toList()[_depthPointer];
+          var _number = _queryDepth[currentPointer] as int;
+          _queryDepth[currentPointer] = _number + 1;
+          log('$_queryDepth');
           //address pointer
           _maxAddressDepth++;
         }
@@ -332,8 +338,9 @@ class ElectrumConnection with ChangeNotifier {
       var _number = _queryDepth[currentPointer] as int;
       _queryDepth[currentPointer] = _number + 1;
     } else if (_depthPointer < _queryDepth.keys.length - 1) {
-      log('move pointer');
+      log('move pointer ${currentPointer} = 0');
       _queryDepth[currentPointer] = 0;
+      log('$_queryDepth');
       _depthPointer++;
       await subscribeNextDerivedAddress();
     }
