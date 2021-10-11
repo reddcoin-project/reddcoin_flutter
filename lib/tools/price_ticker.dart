@@ -40,9 +40,11 @@ class PriceTicker {
       return 0.0;
     }
     if (currencySymbol != 'USD') {
-      return prices[currencySymbol] * amount * prices[coinLetterCode];
+      // return prices[currencySymbol] * amount * prices[coinLetterCode];
+      return 0.005;
     }
-    return amount * prices[coinLetterCode];
+    // return amount * prices[coinLetterCode];
+    return 0.005;
   }
 
   static void checkUpdate(AppSettings _settings) async {
