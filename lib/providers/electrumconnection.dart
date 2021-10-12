@@ -338,7 +338,7 @@ class ElectrumConnection with ChangeNotifier {
       var _number = _queryDepth[currentPointer] as int;
       _queryDepth[currentPointer] = _number + 1;
     } else if (_depthPointer < _queryDepth.keys.length - 1) {
-      log('move pointer ${currentPointer} = 0');
+      log('move pointer $currentPointer = 0');
       _queryDepth[currentPointer] = 0;
       log('$_queryDepth');
       _depthPointer++;
