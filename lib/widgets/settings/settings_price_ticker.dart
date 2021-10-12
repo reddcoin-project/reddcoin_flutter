@@ -105,8 +105,6 @@ class _SettingsPriceTickerState extends State<SettingsPriceTicker> {
         widget._settings.selectedCurrency.isNotEmpty) {
       //copy data
       final currencyData = widget._settings.exchangeRates.keys.toList();
-      currencyData.insert(0, 'USD'); //add USD
-      currencyData.remove('RDD'); //don't show PPC
 
       return currencyData.map((currency) {
         return InkWell(
