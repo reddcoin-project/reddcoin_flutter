@@ -87,6 +87,8 @@
     "currency_RON": "Romanian leu",
     "currency_RUB": "Russian rouble",
     "currency_USD": "US Dollar",
+    "currency_AUD": "Australian Dollar",
+    "currency_KRW": "South Korean Won",
     "export_now": "Export now",
     "id": "Id",
     "import_seed": "Please enter the seed you wish to import.",

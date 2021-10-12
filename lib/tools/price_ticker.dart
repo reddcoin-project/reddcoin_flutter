@@ -23,6 +23,7 @@ class PriceTicker {
 
   static Map currencySymbols = {
     'USD': '\$',
+    'AUD': '\$',
     'EUR': '€',
     'ARS': '\$',
     'BRL': 'R\$',
@@ -31,7 +32,8 @@ class PriceTicker {
     'HRK': 'kn',
     'INR': '₹',
     'RON': 'L',
-    'RUB': '₽'
+    'RUB': '₽',
+    'KRW': '₩'
   };
 
   static double renderPrice(
