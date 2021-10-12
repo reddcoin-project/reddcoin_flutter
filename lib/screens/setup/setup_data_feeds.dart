@@ -61,7 +61,7 @@ class _SetupDataFeedsScreenState extends State<SetupDataFeedsScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/icon/ppc-icon-white-256.png',
+              'assets/icon/rdd-icon-white-256.png',
               width: 50,
             ),
             Text(
