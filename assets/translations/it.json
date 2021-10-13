@@ -182,7 +182,7 @@
     "wallet_rescan_content": "Riavvia la scansione del portafoglio. Può servire in caso di problemi con transazioni o importi.\nPotrebbe richiedere qualche istante.",
     "receive_faucet": "Apri faucet",
     "addressbook_search": "Inserisci indirizzi, etichette",
-    "receive_obtain": "Ottieni tPPC",
+    "receive_obtain": "Ottieni tRDD",
     "receive_website": "Apri il sito",
     "send_qr": "QR-Code",
     "wallet_bottom_nav_addr": "Indirizzi",
