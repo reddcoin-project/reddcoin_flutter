@@ -30,8 +30,8 @@ You can also sign up for our open beta testing here:
 ![Screenshot_scaled](https://user-images.githubusercontent.com/17320471/132971293-6875b792-6638-424e-86be-eb6a3468ab1f.png)
 
 ## Help Translate
-<a href="https://weblate.rdd.lol/engage/reddcoin-flutter/">
-<img src="https://weblate.rdd.lol/widgets/reddcoin-flutter/-/translations/multi-auto.svg" alt="Translation status" />
+<a href="https://weblate.reddcoin.com/engage/reddcoin-flutter/">
+<img src="https://weblate.reddcoin.com/widgets/reddcoin-flutter/-/multi-auto.svg" alt="Translation status" />
 </a>
 
 ## Known Limitations
