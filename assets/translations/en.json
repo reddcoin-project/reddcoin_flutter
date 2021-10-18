@@ -1,9 +1,9 @@
 {
     "about": "About",
     "about_developers": "© $year The reddcoin_flutter Developers",
-    "about_license": "Licensed under AGPL-3.0",
-    "about_free": "This software is open source, free and does not come with any warranty whatsoever.\nUse at own risk.",
-    "about_view_source": "View Source Code",
+    "about_license": "about_license",
+    "about_free": "This software is open source, free and does not come with any warranty. Use at your own risk.",
+    "about_view_source": "About_source_code",
     "about_data_protection": "This software protects your data and privacy to the best of its abilities.\nThis app stores all necessary data locally on your device.\nThere is no analytics or advertising software inside.",
     "about_data_declaration": "View Privacy and Data Protection Declaration",
     "about_foundation": "This project is supported financially by the Reddcoin Foundation.\nPlease consider donating to the foundation, to further the development of this app.",
