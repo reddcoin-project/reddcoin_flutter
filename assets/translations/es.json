@@ -210,5 +210,7 @@
     "wallets_list": "Sus billeteras",
     "wallets_none": "No tiene billeteras activas",
     "wallet_value_alert_title": "Alto valor de las monedas",
-    "wallet_receive_label_hint": "Sugerencia: al presionar este botón se guardará la etiqueta de dirección"
+    "wallet_receive_label_hint": "Sugerencia: al presionar este botón se guardará la etiqueta de dirección",
+    "wallet_bottom_nav_receive": "Recibir",
+    "wallet_receive": "Recibir"
 }
