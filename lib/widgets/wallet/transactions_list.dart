@@ -192,7 +192,7 @@ class _TransactionListState extends State<TransactionList> {
                                 _filteredTx[i - 1].direction == 'out'
                                     ? Text(
                                         '-' +
-                                            (_filteredTx[i - 1].fee / 1000000)
+                                            (_filteredTx[i - 1].fee / 100000000)
                                                 .toString(),
                                         style: TextStyle(
                                           fontWeight: FontWeight.w300,
