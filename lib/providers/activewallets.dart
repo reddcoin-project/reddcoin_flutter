@@ -431,7 +431,7 @@ class ActiveWallets with ChangeNotifier {
         );
 
         for (var i = 0; i <= openWallet.addresses.length; i++) {
-          var derivePath = "$getRootDerivationPath()/0'/0/$i";
+          var derivePath = "${getRootDerivationPath(identifier)}/0'/0/$i";
           log('Derived Path: $derivePath');
           final child = hdWallet.derivePath(derivePath);
           _wifs[child.address] = child.wif;
