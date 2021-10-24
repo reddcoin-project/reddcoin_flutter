@@ -162,7 +162,7 @@
     "receive_website_exchandes": "Abrir lista de exchanges",
     "send_label": "Etiqueta (opcional)",
     "wallet_pop_menu_paperwallet": "Importar Paper Wallet",
-    "paperwallet_success": "Paper Wallet se importó correctamente. \n\nLa transacción aparecerá muy pronto.",
+    "paperwallet_success": "Paper Wallet se importó correctamente.\nLa transacción aparecerá muy pronto.",
     "setup_create_pin": "Crear PIN",
     "setup_import_title": "Importar Semilla",
     "setup_files_for_wallet": "Cree todos los archivos necesarios para comenzar con su billetera.\nPor favor, elija su opción.",
@@ -212,5 +212,12 @@
     "wallet_value_alert_title": "Alto valor de las monedas",
     "wallet_receive_label_hint": "Sugerencia: al presionar este botón se guardará la etiqueta de dirección",
     "wallet_bottom_nav_receive": "Recibir",
-    "wallet_receive": "Recibir"
+    "wallet_receive": "Recibir",
+    "app_settings_walletHome": "Requerido para la billetera de monedas",
+    "app_settings_walletList": "Requerir para la lista de billeteras",
+    "app_settings_price_alert_content": "Esto habilitará nuestra fuente de datos de precios amigable con la privacidad. \nPuede desactivarse en cualquier momento.",
+    "send_dust": "Dust: -$amount $letter_code",
+    "not_again": "No volver a mostrar",
+    "paperwallet_step_4_text": "Vaciar billetera e importar",
+    "wallet_value_alert_content": "Almacenar este valor de monedas en una billetera móvil es arriesgado. \nConsidere mover sus monedas al almacenamiento en frío."
 }
