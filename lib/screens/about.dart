@@ -35,8 +35,8 @@ class _AboutScreenState extends State<AboutScreen> {
 
   Future<void> launchMailto() async {
     final mailtoLink = Mailto(
-      to: ['hello@app.reddcoin.net'],
-      subject: 'Reddcoin Wallet',
+      to: ['gnasher@reddcoin.com'],
+      subject: 'Reddcoin Mobile Wallet',
     );
     await launch('$mailtoLink');
   }
