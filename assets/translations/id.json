@@ -151,7 +151,7 @@
     "wallet_bottom_nav_receive": "Diterima",
     "setup_price_feed_description": "Anda dapat mengaktifkan feed harga eksternal opsional kami di sini. \nIni akan memungkinkan saldo dompet Anda ditampilkan pada nilai tukar waktu nyata.",
     "wallet_scan_notice": "Ini mungkin memakan waktu cukup lama. Jangan tutup layar ini!",
-    "send_dust": "Dust: -$amount $letter_code",
+    "send_dust": "Debu: -$amount $letter_code",
     "server_add_no_wss": "Harus dimulai dengan wss:// \nProtokol lain saat ini tidak didukung",
     "server_add_no_port": "Harus berisi port, mis. :50004",
     "server_add_server_wrong_genesis": "Hash Genesis tidak cocok. \nServer ini tidak mendukung koin ini.",
@@ -218,6 +218,6 @@
     "wallets_list": "Wallet Anda",
     "wallets_none": "Anda tidak memiliki dompet aktif",
     "wallet_value_alert_title": "Nilai koin yang tinggi",
-    "setup_continue_alert_content": "Pastikan Anda telah menyimpan frase benih Anda. \nAnda dapat mengaksesnya nanti di pengaturan aplikasi.",
+    "setup_continue_alert_content": "Pastikan Anda telah menyimpan frase benih. \nAnda dapat mengaksesnya nanti di pengaturan aplikasi.",
     "setup_files_for_wallet": "Buat semua file yang diperlukan untuk memulai dompet Anda. \nSilakan pilih opsi Anda."
 }
