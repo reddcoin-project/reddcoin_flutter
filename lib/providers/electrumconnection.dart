@@ -302,7 +302,7 @@ class ElectrumConnection with ChangeNotifier {
           var currentPointer = _queryDepth.keys.toList()[_depthPointer];
           var _number = _queryDepth[currentPointer] as int;
           _queryDepth[currentPointer] = _number + 1;
-          log('$_queryDepth');
+          log('HandleAddressStatus: $_queryDepth');
           //address pointer
           _maxAddressDepth++;
         }
@@ -320,7 +320,7 @@ class ElectrumConnection with ChangeNotifier {
 
     if (_depthPointer == 1 && _queryDepth[currentPointer]! < _maxChainDepth ||
         _depthPointer == 2 && _queryDepth[currentPointer]! < _maxAddressDepth) {
-      log('$_queryDepth');
+      log('SubsribeNextDerivedAddress: $_queryDepth');
 
       var _nextAddr = await _activeWallets.getAddressFromDerivationPath(
         _coinName,
@@ -329,7 +329,7 @@ class ElectrumConnection with ChangeNotifier {
         _queryDepth['address']!,
       );
 
-      log('$_nextAddr');
+      log('Next Address is: $_nextAddr');
 
       subscribeToScriptHashes(
         await _activeWallets.getWalletScriptHashes(_coinName, _nextAddr),
