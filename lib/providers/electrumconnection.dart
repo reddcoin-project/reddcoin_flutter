@@ -301,7 +301,6 @@ class ElectrumConnection with ChangeNotifier {
           //increase address pointer
           var currentPointer = _queryDepth.keys.toList()[_depthPointer];
           var _number = _queryDepth[currentPointer] as int;
-          _queryDepth[currentPointer] = _number + 1;
           log('HandleAddressStatus: $_queryDepth');
           //address pointer
           _maxAddressDepth++;
