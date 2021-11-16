@@ -15,6 +15,8 @@ class WalletAddress extends HiveObject {
   bool? isOurs = true; //nullable for backward compatability
   @HiveField(5)
   String? wif = ''; //nullable for backward compatability
+  @HiveField(6)
+  bool? isChangeAddr = false; //nullable for backward compatability
 
   WalletAddress({
     required this.address,
@@ -23,6 +25,7 @@ class WalletAddress extends HiveObject {
     required this.status,
     required this.isOurs,
     required this.wif,
+    required this.isChangeAddr,
   });
 
   set newStatus(String? newStatus) {
@@ -39,5 +42,13 @@ class WalletAddress extends HiveObject {
 
   set newWif(String newWif) {
     wif = newWif;
+  }
+
+  bool get IsChangeAddr {
+    return isChangeAddr ?? false;
+  }
+
+  set newIsChangeAddr(bool newChange) {
+    isChangeAddr = newChange;
   }
 }
