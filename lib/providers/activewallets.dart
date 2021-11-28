@@ -114,18 +114,10 @@ class ActiveWallets with ChangeNotifier {
       network: network,
     );
 
-    if (master == true) {
-      var derivePath = "${getRootDerivationPath(identifier)}/$account'/$chain/$address";
-      log('Derived Master Path: $derivePath');
+    var derivePath = "${getRootDerivationPath(identifier)}/$account'/$chain/$address";
+    log('getAddressFromDerivationPath: Derived Path: $derivePath');
 
-      return hdWallet.derivePath(derivePath).address;
-      // return hdWallet.address;
-    } else {
-      var derivePath = "${getRootDerivationPath(identifier)}/$account'/$chain/$address";
-      log('Derived Path: $derivePath');
-
-      return hdWallet.derivePath(derivePath).address;
-    }
+    return hdWallet.derivePath(derivePath).address;
   }
 
   Future<void> generateUnusedAddress(String identifier) async {
