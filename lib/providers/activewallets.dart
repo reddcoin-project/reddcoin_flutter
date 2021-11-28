@@ -138,7 +138,7 @@ class ActiveWallets with ChangeNotifier {
     if (openWallet.addresses.isEmpty) {
       //generate new address
       var derivePath = "${getRootDerivationPath(identifier)}/0'/0/0";
-      log('Derived Root Path: $derivePath');
+      log('generateUnusedAddress: Derived Root Path: $derivePath');
       var newHdWallet = hdWallet.derivePath(derivePath);
       openWallet.addNewAddress = WalletAddress(
         address: newHdWallet.address!,
@@ -167,7 +167,7 @@ class ActiveWallets with ChangeNotifier {
             .where((element) => element.isOurs == true)
             .length;
         var derivePath = "${getRootDerivationPath(identifier)}/0'/0/$numberOfOurAddr";
-        log('Derived Path: $derivePath');
+        log('generateUnusedAddress: Derived Path: $derivePath');
         var newHdWallet = hdWallet.derivePath(derivePath);
 
         final res = openWallet.addresses.firstWhereOrNull(
@@ -177,7 +177,7 @@ class ActiveWallets with ChangeNotifier {
           //next addr in derivePath is already used for some reason
           numberOfOurAddr++;
           derivePath = "${getRootDerivationPath(identifier)}/0'/0/$numberOfOurAddr";
-          log('Derived Path: $derivePath');
+          log('generateUnusedAddress: Derived Path: $derivePath');
           newHdWallet = hdWallet.derivePath(derivePath);
         }
 
@@ -194,6 +194,7 @@ class ActiveWallets with ChangeNotifier {
         unusedAddress = newHdWallet.address!;
       }
     }
+    log('generateUnusedAddress: Save Wallet');
     await openWallet.save();
   }
 
@@ -470,7 +471,7 @@ class ActiveWallets with ChangeNotifier {
 
   Future<void> updateAddressStatus(
       String identifier, String address, String? status) async {
-    log('updating $address to $status');
+    log('updateAddressStatus: updating $address to $status');
     //set address to used
     //update status for address
     var openWallet = getSpecificCoinWallet(identifier);
@@ -529,7 +530,7 @@ class ActiveWallets with ChangeNotifier {
 
         for (var i = 0; i <= openWallet.addresses.length; i++) {
           var derivePath = "${getRootDerivationPath(identifier)}/0'/0/$i";
-          log('Derived Path: $derivePath');
+          log('getWif: Derived Path: $derivePath');
           final child = hdWallet.derivePath(derivePath);
           _wifs[child.address] = child.wif;
         }

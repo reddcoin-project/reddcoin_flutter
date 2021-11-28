@@ -284,7 +284,7 @@ class ElectrumConnection with ChangeNotifier {
       //emulate scripthash subscribe push
       var hash = _addresses.entries
           .firstWhereOrNull((element) => element.key == address)!;
-      log('status changed! $oldStatus, $newStatus');
+      log('handleAddressStatus: status changed! $oldStatus, $newStatus');
       //handle the status update
       handleScriptHashSubscribeNotification(hash.value, newStatus);
     }
@@ -301,11 +301,11 @@ class ElectrumConnection with ChangeNotifier {
           //increase address pointer
           var currentPointer = _queryDepth.keys.toList()[_depthPointer];
           var _number = _queryDepth[currentPointer] as int;
-          log('HandleAddressStatus: $_queryDepth');
+          log('handleAddressStatus: Next $_queryDepth');
           //address pointer
           _maxAddressDepth++;
         }
-        log('writing $address to wallet');
+        log('handleAddressStatus: writing $address to wallet');
         //saving to wallet
         _activeWallets.addAddressFromScan(_coinName, address);
         //try next
@@ -319,7 +319,7 @@ class ElectrumConnection with ChangeNotifier {
 
     if (_depthPointer == 1 && _queryDepth[currentPointer]! < _maxChainDepth ||
         _depthPointer == 2 && _queryDepth[currentPointer]! < _maxAddressDepth) {
-      log('SubsribeNextDerivedAddress: $_queryDepth');
+      log('subscribeNextDerivedAddress: $_queryDepth');
 
       var _nextAddr = await _activeWallets.getAddressFromDerivationPath(
         _coinName,
@@ -328,7 +328,7 @@ class ElectrumConnection with ChangeNotifier {
         _queryDepth['address']!,
       );
 
-      log('Next Address is: $_nextAddr');
+      log('subscribeNextDerivedAddress: Next Address is: $_nextAddr');
 
       subscribeToScriptHashes(
         await _activeWallets.getWalletScriptHashes(_coinName, _nextAddr),
@@ -337,11 +337,13 @@ class ElectrumConnection with ChangeNotifier {
       var _number = _queryDepth[currentPointer] as int;
       _queryDepth[currentPointer] = _number + 1;
     } else if (_depthPointer < _queryDepth.keys.length - 1) {
-      log('move pointer $currentPointer = 0');
+      log('subscribeNextDerivedAddress: move pointer $currentPointer = 0');
       _queryDepth[currentPointer] = 0;
-      log('$_queryDepth');
+      log('subscribeNextDerivedAddress: $_queryDepth');
       _depthPointer++;
       await subscribeNextDerivedAddress();
+    } else {
+      log('subscribeNextDerivedAddress: $_queryDepth');
     }
   }
 
@@ -367,7 +369,7 @@ class ElectrumConnection with ChangeNotifier {
     final address = _addresses.keys.firstWhere(
         (element) => _addresses[element] == hashId,
         orElse: () => null);
-    log('update for $hashId');
+    log('handleScriptHashSubscribeNotification: update for $hashId');
     //update status so we flag that we proccessed this update already
     await _activeWallets.updateAddressStatus(_coinName, address, newStatus);
     //fire listunspent to get utxo
