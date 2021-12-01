@@ -467,13 +467,25 @@ class ActiveWallets with ChangeNotifier {
     //set address to used
     //update status for address
     var openWallet = getSpecificCoinWallet(identifier);
-    openWallet.addresses.forEach((walletAddr) async {
-      if (walletAddr.address == address) {
-        walletAddr.newUsed = status == null ? false : true;
-        walletAddr.newStatus = status;
+    var addr = openWallet.addresses.firstWhereOrNull(
+          (element) => element.address == address,
+    );
+    if (addr == null) {
+      openWallet.addNewAddress = WalletAddress(
+          address: address,
+          addressBookName: '',
+          used: status == null ? false : true,
+          status: status,
+          isOurs: true,
+          isChangeAddr: false,
+          wif: await getWif(identifier, address));
+    } else {
+      if (addr.address == address) {
+        addr.newUsed = status == null ? false : true;
+        addr.newStatus = status;
       }
       await openWallet.save();
-    });
+    }
     await generateUnusedAddress(identifier);
   }
 
