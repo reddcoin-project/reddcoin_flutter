@@ -36,7 +36,7 @@ class ElectrumConnection with ChangeNotifier {
   late List _availableServers;
   late StreamSubscription _offlineSubscription;
   int _depthPointer = 2;
-  int _maxChainDepth = 1; // Addresses & Change
+  int _maxChainDepth = 2; // Addresses & Change
   int _maxAddressDepth = 1; //no address depth scan for now
   Map<String, int> _queryDepth = {'account': 0, 'chain': 0, 'address': 0};
 
@@ -174,7 +174,7 @@ class ElectrumConnection with ChangeNotifier {
     _scanMode = false;
     _paperWalletUtxos = {};
     _queryDepth = {'account': 0, 'chain': 0, 'address': 0};
-    _maxChainDepth = 1;
+    _maxChainDepth = 2;
     _maxAddressDepth = 1; //no address depth scan for now
     _depthPointer = 2;
 
@@ -293,17 +293,15 @@ class ElectrumConnection with ChangeNotifier {
         await subscribeNextDerivedAddress();
       } else {
         //increase depth because we found one != null
-        // if (_depthPointer == 1) {
-        //   //chain pointer
-        //   _maxChainDepth++;
-        // } else
+        if (_depthPointer == 1) {
+          //chain pointer is a fixed depth [main and change] dont need to manipulate here
+          //_maxChainDepth++;
+          log('handleAddressStatus: maxChainDepth $_maxChainDepth');
+        } else
         if (_depthPointer == 2) {
-          //increase address pointer
-          var currentPointer = _queryDepth.keys.toList()[_depthPointer];
-          var _number = _queryDepth[currentPointer] as int;
-          log('handleAddressStatus: Next $_queryDepth');
           //address pointer
           _maxAddressDepth++;
+          log('handleAddressStatus: maxAddressDepth $_maxAddressDepth');
         }
         log('handleAddressStatus: writing $address to wallet');
         //saving to wallet
@@ -334,14 +332,26 @@ class ElectrumConnection with ChangeNotifier {
         await _activeWallets.getWalletScriptHashes(_coinName, _nextAddr),
       );
 
+      if (_depthPointer == 1) {
+        // at chain level, need to move back to address
+        log('subscribeNextDerivedAddress: pointer @ $currentPointer');
+        _depthPointer++;
+        currentPointer = _queryDepth.keys.toList()[_depthPointer];
+        log('subscribeNextDerivedAddress: move pointer $currentPointer');
+      }
       var _number = _queryDepth[currentPointer] as int;
       _queryDepth[currentPointer] = _number + 1;
-    } else if (_depthPointer < _queryDepth.keys.length - 1) {
+    } else if (_depthPointer < _queryDepth.keys.length) {
       log('subscribeNextDerivedAddress: move pointer $currentPointer = 0');
       _queryDepth[currentPointer] = 0;
-      log('subscribeNextDerivedAddress: $_queryDepth');
-      _depthPointer++;
-      await subscribeNextDerivedAddress();
+      _depthPointer--;
+      if (_depthPointer > 0 ) {
+        var nextPointer = _queryDepth.keys.toList()[_depthPointer];
+        var _nextNumber = _queryDepth[nextPointer] as int;
+        _queryDepth[nextPointer] = _nextNumber + 1;
+        log('subscribeNextDerivedAddress: move to $_queryDepth');
+        await subscribeNextDerivedAddress();
+      }
     } else {
       log('subscribeNextDerivedAddress: $_queryDepth');
     }
