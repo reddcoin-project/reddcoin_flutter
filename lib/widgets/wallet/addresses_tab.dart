@@ -358,7 +358,7 @@ class _AddressTabState extends State<AddressTab> {
                   subtitle: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Center(
-                      child: Text(addr.address),
+                      child: Text(addr.address + (addr.isChangeAddr == true ? ' (C)': ' (R)')),
                     ),
                   ),
                   title: Center(
