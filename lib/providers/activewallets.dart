@@ -23,6 +23,7 @@ class ActiveWallets with ChangeNotifier {
   ActiveWallets(this._encryptedBox);
   late String _seedPhrase;
   String _unusedAddress = '';
+  String _unusedChangeAddress = '';
   late Box _walletBox;
   Box? _vaultBox;
   // ignore: prefer_final_fields
@@ -43,11 +44,20 @@ class ActiveWallets with ChangeNotifier {
     return _unusedAddress;
   }
 
+  String get getUnusedChangeAddress {
+    return _unusedChangeAddress;
+  }
+
   set unusedAddress(String newAddr) {
     _unusedAddress = newAddr;
     notifyListeners();
   }
-  
+
+  set unusedChangeAddress(String newAddr) {
+    _unusedChangeAddress = newAddr;
+    notifyListeners();
+  }
+
   String getRootDerivationPath(String identifier) {
     var hardened = "'";
     var coin = AvailableCoins().getSpecificCoin(identifier);
@@ -104,18 +114,10 @@ class ActiveWallets with ChangeNotifier {
       network: network,
     );
 
-    if (master == true) {
-      var derivePath = "${getRootDerivationPath(identifier)}/$account'/$chain/$address";
-      log('Derived Master Path: $derivePath');
+    var derivePath = "${getRootDerivationPath(identifier)}/$account'/$chain/$address";
+    log('getAddressFromDerivationPath: Derived Path: $derivePath');
 
-      return hdWallet.derivePath(derivePath).address;
-      // return hdWallet.address;
-    } else {
-      var derivePath = "${getRootDerivationPath(identifier)}/$account'/$chain/$address";
-      log('Derived Path: $derivePath');
-
-      return hdWallet.derivePath(derivePath).address;
-    }
+    return hdWallet.derivePath(derivePath).address;
   }
 
   Future<void> generateUnusedAddress(String identifier) async {
@@ -128,7 +130,7 @@ class ActiveWallets with ChangeNotifier {
     if (openWallet.addresses.isEmpty) {
       //generate new address
       var derivePath = "${getRootDerivationPath(identifier)}/0'/0/0";
-      log('Derived Root Path: $derivePath');
+      log('generateUnusedAddress: Derived Root Path: $derivePath');
       var newHdWallet = hdWallet.derivePath(derivePath);
       openWallet.addNewAddress = WalletAddress(
         address: newHdWallet.address!,
@@ -137,13 +139,14 @@ class ActiveWallets with ChangeNotifier {
         status: null,
         isOurs: true,
         wif: newHdWallet.wif,
+        isChangeAddr: false,
       );
       unusedAddress = newHdWallet.address!;
     } else {
       //wallet is not brand new, lets find an unused address
       var unusedAddr;
       openWallet.addresses.forEach((walletAddr) {
-        if (walletAddr.used == false && walletAddr.status == null) {
+        if (walletAddr.used == false && walletAddr.status == null && walletAddr.isChangeAddr == false) {
           unusedAddr = walletAddr.address;
         }
       });
@@ -153,10 +156,10 @@ class ActiveWallets with ChangeNotifier {
       } else {
         //not empty, but all used -> create new one
         var numberOfOurAddr = openWallet.addresses
-            .where((element) => element.isOurs == true)
+            .where((element) => element.isOurs == true && element.isChangeAddr == false)
             .length;
         var derivePath = "${getRootDerivationPath(identifier)}/0'/0/$numberOfOurAddr";
-        log('Derived Path: $derivePath');
+        log('generateUnusedAddress: Derived Path: $derivePath');
         var newHdWallet = hdWallet.derivePath(derivePath);
 
         final res = openWallet.addresses.firstWhereOrNull(
@@ -166,7 +169,7 @@ class ActiveWallets with ChangeNotifier {
           //next addr in derivePath is already used for some reason
           numberOfOurAddr++;
           derivePath = "${getRootDerivationPath(identifier)}/0'/0/$numberOfOurAddr";
-          log('Derived Path: $derivePath');
+          log('generateUnusedAddress: Derived Path: $derivePath');
           newHdWallet = hdWallet.derivePath(derivePath);
         }
 
@@ -177,9 +180,80 @@ class ActiveWallets with ChangeNotifier {
           status: null,
           isOurs: true,
           wif: newHdWallet.wif,
+          isChangeAddr: false,
         );
 
         unusedAddress = newHdWallet.address!;
+      }
+    }
+    log('generateUnusedAddress: Save Wallet');
+    await openWallet.save();
+  }
+
+  Future<void> generateUnusedChangeAddress(String identifier) async {
+    var openWallet = getSpecificCoinWallet(identifier);
+    final network = AvailableCoins().getSpecificCoin(identifier).networkType;
+    var hdWallet = HDWallet.fromSeed(
+      seedPhraseUint8List(await seedPhrase),
+      network: network,
+    );
+    if (openWallet.addresses.isEmpty) {
+      //generate new address
+      var derivePath = "${getRootDerivationPath(identifier)}/0'/1/0";
+      log('generateUnusedChangeAddress: Derived Root Path: $derivePath');
+      var newHdWallet = hdWallet.derivePath(derivePath);
+      openWallet.addNewAddress = WalletAddress(
+        address: newHdWallet.address!,
+        addressBookName: '',
+        used: false,
+        status: null,
+        isOurs: true,
+        wif: newHdWallet.wif,
+        isChangeAddr: true,
+      );
+      unusedChangeAddress = newHdWallet.address!;
+    } else {
+      //wallet is not brand new, lets find an unused address
+      var unusedAddr;
+      openWallet.addresses.forEach((walletAddr) {
+        if (walletAddr.used == false && walletAddr.status == null && walletAddr.isChangeAddr == true) {
+          unusedAddr = walletAddr.address;
+        }
+      });
+      if (unusedAddr != null) {
+        //unused address available
+        unusedChangeAddress = unusedAddr;
+      } else {
+        //not empty, but all used -> create new one
+        var numberOfOurAddr = openWallet.addresses
+            .where((element) => element.isOurs == true && element.isChangeAddr == true)
+            .length;
+        var derivePath = "${getRootDerivationPath(identifier)}/0'/1/$numberOfOurAddr";
+        log('generateUnusedChangeAddress: Derived Path: $derivePath');
+        var newHdWallet = hdWallet.derivePath(derivePath);
+
+        final res = openWallet.addresses.firstWhereOrNull(
+                (element) => element.address == newHdWallet.address);
+
+        if (res != null) {
+          //next addr in derivePath is already used for some reason
+          numberOfOurAddr++;
+          derivePath = "${getRootDerivationPath(identifier)}/0'/1/$numberOfOurAddr";
+          log('generateUnusedChangeAddress: Derived Path: $derivePath');
+          newHdWallet = hdWallet.derivePath(derivePath);
+        }
+
+        openWallet.addNewAddress = WalletAddress(
+          address: newHdWallet.address!,
+          addressBookName: '',
+          used: false,
+          status: null,
+          isOurs: true,
+          wif: newHdWallet.wif,
+          isChangeAddr: true,
+        );
+
+        unusedChangeAddress = newHdWallet.address!;
       }
     }
     await openWallet.save();
@@ -388,6 +462,34 @@ class ActiveWallets with ChangeNotifier {
   }
 
   Future<void> updateAddressStatus(
+      String identifier, String address, String? status, int? chain) async {
+    log('updateAddressStatus: updating $address to $status');
+    //set address to used
+    //update status for address
+    var openWallet = getSpecificCoinWallet(identifier);
+    var addr = openWallet.addresses.firstWhereOrNull(
+          (element) => element.address == address,
+    );
+    if (addr == null) {
+      openWallet.addNewAddress = WalletAddress(
+          address: address,
+          addressBookName: '',
+          used: status == null ? false : true,
+          status: status,
+          isOurs: true,
+          isChangeAddr: chain == 0 ? false : true,
+          wif: await getWif(identifier, address));
+    } else {
+      if (addr.address == address) {
+        addr.newUsed = status == null ? false : true;
+        addr.newStatus = status;
+      }
+      await openWallet.save();
+    }
+    await generateUnusedAddress(identifier);
+  }
+
+  Future<void> updateChangeAddressStatus(
       String identifier, String address, String? status) async {
     log('updating $address to $status');
     //set address to used
@@ -400,7 +502,7 @@ class ActiveWallets with ChangeNotifier {
       }
       await openWallet.save();
     });
-    await generateUnusedAddress(identifier);
+    await generateUnusedChangeAddress(identifier);
   }
 
   Future<String> getAddressForTx(String identifier, String txid) async {
@@ -432,7 +534,7 @@ class ActiveWallets with ChangeNotifier {
 
         for (var i = 0; i <= openWallet.addresses.length; i++) {
           var derivePath = "${getRootDerivationPath(identifier)}/0'/0/$i";
-          log('Derived Path: $derivePath');
+          log('getWif: Derived Path: $derivePath');
           final child = hdWallet.derivePath(derivePath);
           _wifs[child.address] = child.wif;
         }
@@ -495,8 +597,10 @@ class ActiveWallets with ChangeNotifier {
             _destroyedChange = changeAmount;
             tx.addOutput(address, _txAmount - fee);
           } else {
+            //generate new wallet addr
+            await generateUnusedChangeAddress(identifier);
             tx.addOutput(address, _txAmount);
-            tx.addOutput(_unusedAddress, changeAmount);
+            tx.addOutput(_unusedChangeAddress, changeAmount);
           }
         } else {
           tx.addOutput(address, _txAmount - fee);
@@ -633,6 +737,7 @@ class ActiveWallets with ChangeNotifier {
         status: null,
         isOurs: false,
         wif: '',
+        isChangeAddr: false,
       );
     }
 
@@ -640,7 +745,7 @@ class ActiveWallets with ChangeNotifier {
     notifyListeners();
   }
 
-  void addAddressFromScan(String identifier, String address) async {
+  void addAddressFromScan(String identifier, String address, int? chain) async {
     var openWallet = getSpecificCoinWallet(identifier);
     var addr = openWallet.addresses.firstWhereOrNull(
       (element) => element.address == address,
@@ -652,9 +757,10 @@ class ActiveWallets with ChangeNotifier {
           used: true,
           status: null,
           isOurs: true,
+          isChangeAddr: chain == 0 ? false : true,
           wif: await getWif(identifier, address));
     } else {
-      await updateAddressStatus(identifier, address, null);
+      await updateAddressStatus(identifier, address, null, chain);
     }
 
     await openWallet.save();

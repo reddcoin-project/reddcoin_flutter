@@ -53,13 +53,9 @@ class _WalletImportScanScreenState extends State<WalletImportScanScreen> {
         _latestUpdate = DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
         if (_scanStarted == false) {
-          //returns master address for hd wallet
-          var _masterAddr = await _activeWallets.getAddressFromDerivationPath(
-              _coinName, 0, 0, 0, true);
+          // subscribe to the next available address, on import it should be m/44'/4'/0'/0/0
+          await _connectionProvider!.subscribeNextDerivedAddress();
 
-          //subscribe to hd master
-          _connectionProvider!.subscribeToScriptHashes(await _activeWallets
-              .getWalletScriptHashes(_coinName, _masterAddr));
           setState(() {
             _scanStarted = true;
           });

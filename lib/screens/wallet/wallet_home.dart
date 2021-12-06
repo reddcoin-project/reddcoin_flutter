@@ -87,6 +87,7 @@ class _WalletHomeState extends State<WalletHomeScreen>
       _connectionProvider = Provider.of<ElectrumConnection>(context);
       _activeWallets = Provider.of<ActiveWallets>(context);
       await _activeWallets.generateUnusedAddress(_wallet.name);
+      await _activeWallets.generateUnusedChangeAddress(_wallet.name);
       _walletTransactions =
           await _activeWallets.getWalletTransactions(_wallet.name);
       await _connectionProvider!
