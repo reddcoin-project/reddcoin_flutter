@@ -26,6 +26,7 @@ class ElectrumConnection with ChangeNotifier {
   ElectrumConnectionState _connectionState = ElectrumConnectionState.waiting;
   final Servers _servers;
   Map _addresses = {};
+  Map _chain = {};
   Map<String, List?> _paperWalletUtxos = {};
   late String _coinName;
   int? _latestBlock;
@@ -170,6 +171,7 @@ class ElectrumConnection with ChangeNotifier {
     connectionState = ElectrumConnectionState.waiting; //setter!
     _connection = null;
     _addresses = {};
+    _chain = {};
     _latestBlock = null;
     _scanMode = false;
     _paperWalletUtxos = {};
@@ -305,7 +307,8 @@ class ElectrumConnection with ChangeNotifier {
         }
         log('handleAddressStatus: writing $address to wallet');
         //saving to wallet
-        _activeWallets.addAddressFromScan(_coinName, address);
+        var chain = _chain[address];
+        _activeWallets.addAddressFromScan(_coinName, address, chain);
         //try next
         await subscribeNextDerivedAddress();
       }
@@ -327,6 +330,8 @@ class ElectrumConnection with ChangeNotifier {
       );
 
       log('subscribeNextDerivedAddress: Next Address is: $_nextAddr');
+
+      _chain[_nextAddr] = _queryDepth['chain'];
 
       subscribeToScriptHashes(
         await _activeWallets.getWalletScriptHashes(_coinName, _nextAddr),
@@ -381,7 +386,8 @@ class ElectrumConnection with ChangeNotifier {
         orElse: () => null);
     log('handleScriptHashSubscribeNotification: update for $hashId');
     //update status so we flag that we proccessed this update already
-    await _activeWallets.updateAddressStatus(_coinName, address, newStatus);
+    var chain = _chain[address];
+    await _activeWallets.updateAddressStatus(_coinName, address, newStatus, chain);
     //fire listunspent to get utxo
     sendMessage(
       'blockchain.scripthash.listunspent',

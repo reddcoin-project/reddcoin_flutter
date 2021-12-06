@@ -146,7 +146,7 @@ class ActiveWallets with ChangeNotifier {
       //wallet is not brand new, lets find an unused address
       var unusedAddr;
       openWallet.addresses.forEach((walletAddr) {
-        if (walletAddr.used == false && walletAddr.status == null) {
+        if (walletAddr.used == false && walletAddr.status == null && walletAddr.isChangeAddr == false) {
           unusedAddr = walletAddr.address;
         }
       });
@@ -156,7 +156,7 @@ class ActiveWallets with ChangeNotifier {
       } else {
         //not empty, but all used -> create new one
         var numberOfOurAddr = openWallet.addresses
-            .where((element) => element.isOurs == true)
+            .where((element) => element.isOurs == true && element.isChangeAddr == false)
             .length;
         var derivePath = "${getRootDerivationPath(identifier)}/0'/0/$numberOfOurAddr";
         log('generateUnusedAddress: Derived Path: $derivePath');
@@ -462,7 +462,7 @@ class ActiveWallets with ChangeNotifier {
   }
 
   Future<void> updateAddressStatus(
-      String identifier, String address, String? status) async {
+      String identifier, String address, String? status, int? chain) async {
     log('updateAddressStatus: updating $address to $status');
     //set address to used
     //update status for address
@@ -477,7 +477,7 @@ class ActiveWallets with ChangeNotifier {
           used: status == null ? false : true,
           status: status,
           isOurs: true,
-          isChangeAddr: false,
+          isChangeAddr: chain == 0 ? false : true,
           wif: await getWif(identifier, address));
     } else {
       if (addr.address == address) {
@@ -745,7 +745,7 @@ class ActiveWallets with ChangeNotifier {
     notifyListeners();
   }
 
-  void addAddressFromScan(String identifier, String address) async {
+  void addAddressFromScan(String identifier, String address, int? chain) async {
     var openWallet = getSpecificCoinWallet(identifier);
     var addr = openWallet.addresses.firstWhereOrNull(
       (element) => element.address == address,
@@ -757,10 +757,10 @@ class ActiveWallets with ChangeNotifier {
           used: true,
           status: null,
           isOurs: true,
-          isChangeAddr: false,
+          isChangeAddr: chain == 0 ? false : true,
           wif: await getWif(identifier, address));
     } else {
-      await updateAddressStatus(identifier, address, null);
+      await updateAddressStatus(identifier, address, null, chain);
     }
 
     await openWallet.save();
