@@ -21,9 +21,12 @@ class WalletTransaction extends HiveObject {
   bool broadCasted = true;
   @HiveField(8)
   String broadcastHex = '';
+  @HiveField(9)
+  int? txPos; //nullable for backward compatability
 
   WalletTransaction({
     required this.txid,
+    required this.txPos,
     required this.timestamp,
     required this.value,
     required this.fee,
@@ -44,6 +47,10 @@ class WalletTransaction extends HiveObject {
 
   set newBroadcasted(bool newBroadcasted) {
     broadCasted = newBroadcasted;
+  }
+
+  set newTxPos(int newTxPos) {
+    txPos = newTxPos;
   }
 
   void resetBroadcastHex() {

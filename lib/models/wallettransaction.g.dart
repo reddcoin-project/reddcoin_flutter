@@ -18,6 +18,7 @@ class WalletTransactionAdapter extends TypeAdapter<WalletTransaction> {
     };
     return WalletTransaction(
       txid: fields[0] as String,
+      txPos: fields[9] as int?,
       timestamp: fields[1] as int?,
       value: fields[2] as int,
       fee: fields[3] as int,
@@ -32,7 +33,7 @@ class WalletTransactionAdapter extends TypeAdapter<WalletTransaction> {
   @override
   void write(BinaryWriter writer, WalletTransaction obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.txid)
       ..writeByte(1)
@@ -50,7 +51,9 @@ class WalletTransactionAdapter extends TypeAdapter<WalletTransaction> {
       ..writeByte(7)
       ..write(obj.broadCasted)
       ..writeByte(8)
-      ..write(obj.broadcastHex);
+      ..write(obj.broadcastHex)
+      ..writeByte(9)
+      ..write(obj.txPos);
   }
 
   @override
