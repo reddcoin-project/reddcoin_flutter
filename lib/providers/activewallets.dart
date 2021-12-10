@@ -346,13 +346,14 @@ class ActiveWallets with ChangeNotifier {
   Future<void> putTx(String identifier, String address, Map tx,
       [bool scanMode = false]) async {
     var openWallet = getSpecificCoinWallet(identifier);
-    // log("$address puttx: $tx");
-
-    if (scanMode == true) {
+    // log("addr: $address puttx: $tx");
+    // ignore scanmode and just parse all transactions and determine their status
+    if (scanMode == true && address == 'blah') {
       //write phantom tx that are not displayed in tx list but known to the wallet
       //so they won't be parsed again and cause weird display behaviour
       openWallet.putTransaction(WalletTransaction(
         txid: tx['txid'],
+        txPos: tx['n'],
         timestamp: -1, //flags phantom tx
         value: 0,
         fee: 0,
@@ -379,9 +380,21 @@ class ActiveWallets with ChangeNotifier {
               //more confirmations?
               walletTx.newConfirmations = tx['confirmations'];
             }
+            if (walletTx.txPos == null) {
+              List voutList = tx['vout'].toList();
+              voutList.forEach((vOut) {
+                final asMap = vOut as Map;
+                asMap['scriptPubKey']['addresses'].forEach((addr) {
+                  if (walletTx.address == addr) {
+                    walletTx.newTxPos = vOut['n'];
+                  };
+                });
+              });
+            }
           }
         }
       });
+      log('puttx: tx is in db: $isInWallet');
       //it's not in wallet yet
       if (!isInWallet) {
         //check if that tx addresses more than one of our addresses
@@ -389,19 +402,24 @@ class ActiveWallets with ChangeNotifier {
             .firstWhereOrNull((elem) => elem.hash == tx['txid']);
         var direction = utxoInWallet == null ? 'out' : 'in';
 
+        log("direction: $direction");
+
         if (direction == 'in') {
           List voutList = tx['vout'].toList();
           voutList.forEach((vOut) {
             final asMap = vOut as Map;
+            log('In: vOut ${vOut["n"]} of ${voutList.length}');
             asMap['scriptPubKey']['addresses'].forEach((addr) {
               if (openWallet.addresses
-                      .firstWhereOrNull((element) => element.address == addr) !=
+                      .firstWhereOrNull((element) => element.address == addr && element.IsChangeAddr == false) !=
                   null) {
-                //address is ours, add new tx
+                //address is our receiving, add new tx
                 final txValue = (vOut['value'] * 100000000).toInt();
+                log('In: $addr is our receiving, add new tx');
 
                 openWallet.putTransaction(WalletTransaction(
                   txid: tx['txid'],
+                  txPos: vOut['n'],
                   timestamp: tx['blocktime'] ?? 0,
                   value: txValue,
                   fee: 0,
@@ -411,6 +429,130 @@ class ActiveWallets with ChangeNotifier {
                   confirmations: tx['confirmations'] ?? 0,
                   broadcastHex: '',
                 ));
+              }
+              else if (openWallet.addresses
+                      .firstWhereOrNull((element) => element.address == addr && element.IsChangeAddr == true) !=
+                  null){
+                //address is our change, add new tx as in
+                final txValue = (vOut['value'] * 100000000).toInt();
+                log('In: $addr is our change, adding new tx');
+
+                // openWallet.putTransaction(WalletTransaction(
+                //   txid: tx['txid'],
+                //   txPos: vOut['n'],
+                //   timestamp: tx['blocktime'] ?? 0,
+                //   value: txValue,
+                //   fee: 0,
+                //   address: addr,
+                //   direction: direction,
+                //   broadCasted: true,
+                //   confirmations: tx['confirmations'] ?? 0,
+                //   broadcastHex: '',
+                // ));
+
+              }
+              else {
+                //address is our change, add new tx as in
+                final txValue = (vOut['value'] * 100000000).toInt();
+                log('In: $addr is our something, add new tx');
+
+                openWallet.putTransaction(WalletTransaction(
+                  txid: tx['txid'],
+                  txPos: vOut['n'],
+                  timestamp: tx['blocktime'] ?? 0,
+                  value: txValue,
+                  fee: 0,
+                  address: addr,
+                  direction: 'out',
+                  broadCasted: true,
+                  confirmations: tx['confirmations'] ?? 0,
+                  broadcastHex: '',
+                ));
+              }
+            });
+          });
+        } else {
+          List voutList = tx['vout'].toList();
+          List vinList = tx['vin'].toList();
+          var haveInput = false;
+
+          vinList.forEach((vIn) {
+            var vinAsMap = vIn as Map;
+
+            if (txInWallet
+                .firstWhereOrNull((tx) => tx.txid == vinAsMap['txid'] && tx.txPos == vinAsMap['vout']) !=
+                null ) {
+              haveInput = true;
+
+            }
+          });
+
+          voutList.forEach((vOut) {
+            final asMap = vOut as Map;
+            log('Out: vOut ${vOut["n"]} of ${voutList.length}');
+            asMap['scriptPubKey']['addresses'].forEach((addr) {
+              if (openWallet.addresses
+                      .firstWhereOrNull((element) => element.address == addr && element.IsChangeAddr == false) !=
+                  null) {
+                //address is our receiving, and is not change address, add new tx
+                final txValue = (vOut['value'] * 100000000).toInt();
+                log('Out: $addr is our receiving, add new tx');
+
+                openWallet.putTransaction(WalletTransaction(
+                  txid: tx['txid'],
+                  txPos: vOut['n'],
+                  timestamp: tx['blocktime'] ?? 0,
+                  value: txValue,
+                  fee: 0,
+                  address: addr,
+                  direction: 'in',
+                  broadCasted: true,
+                  confirmations: tx['confirmations'] ?? 0,
+                  broadcastHex: '',
+                ));
+              }
+              else if (openWallet.addresses
+                  .firstWhereOrNull((element) => element.address == addr && element.IsChangeAddr == true) !=
+                  null) {
+                //address is ours, and is change address, add new tx
+                final txValue = (vOut['value'] * 100000000).toInt();
+                log('Out: $addr is our change, adding new tx');
+
+                openWallet.putTransaction(WalletTransaction(
+                  txid: tx['txid'],
+                  txPos: vOut['n'],
+                  timestamp: tx['blocktime'] ?? 0,
+                  value: txValue,
+                  fee: 0,
+                  address: addr,
+                  direction: 'in',
+                  broadCasted: true,
+                  confirmations: tx['confirmations'] ?? 0,
+                  broadcastHex: '',
+                ));
+              }
+              else {
+                if (haveInput) {
+                  //address is not ours, but we used our inputs, add new out tx
+                  final txValue = (vOut['value'] * 100000000).toInt();
+                  log('Out: $addr is NOT ours, have input: $haveInput. add new tx');
+
+                  openWallet.putTransaction(WalletTransaction(
+                    txid: tx['txid'],
+                    txPos: vOut['n'],
+                    timestamp: tx['blocktime'] ?? 0,
+                    value: txValue,
+                    fee: 0,
+                    address: addr,
+                    direction: direction,
+                    broadCasted: true,
+                    confirmations: tx['confirmations'] ?? 0,
+                    broadcastHex: '',
+                  ));
+                }
+                else {
+                  log('Out: $addr is NOT ours, have input: $haveInput. add new tx');
+                }
               }
             });
           });
@@ -439,6 +581,7 @@ class ActiveWallets with ChangeNotifier {
 
     openWallet.putTransaction(WalletTransaction(
       txid: tx['txid'],
+      txPos: null,
       timestamp: tx['blocktime'] ?? 0,
       value: tx['outValue'],
       fee: tx['outFees'],
