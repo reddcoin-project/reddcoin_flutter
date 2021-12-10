@@ -531,13 +531,24 @@ class ActiveWallets with ChangeNotifier {
           seedPhraseUint8List(await seedPhrase),
           network: network,
         );
-
-        for (var i = 0; i <= openWallet.addresses.length; i++) {
+        var counter = openWallet.addresses
+          .where((element) => element.isChangeAddr == false).length;
+        for (var i = 0; i <= counter; i++) {
           var derivePath = "${getRootDerivationPath(identifier)}/0'/0/$i";
           log('getWif: Derived Path: $derivePath');
           final child = hdWallet.derivePath(derivePath);
           _wifs[child.address] = child.wif;
         }
+
+        counter = openWallet.addresses
+            .where((element) => element.isChangeAddr == true).length;
+        for (var i = 0; i <= counter; i++) {
+          var derivePath = "${getRootDerivationPath(identifier)}/0'/1/$i";
+          log('getWif: Derived Path: $derivePath');
+          final child = hdWallet.derivePath(derivePath);
+          _wifs[child.address] = child.wif;
+        }
+
         _wifs[hdWallet.address] = hdWallet.wif;
 
         walletAddress.newWif = _wifs[walletAddress.address]; //save
