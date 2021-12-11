@@ -1,7 +1,7 @@
 name: reddcoin
 description: A new Reddcoin wallet.
 
-version: 0.6.4+1
+version: 0.6.5+1
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
