@@ -1,6 +1,5 @@
 [![Reddcoin Donate](https://badgen.net/badge/reddcoin/Donate/green?icon=https://raw.githubusercontent.com/reddcoin-project/reddcoin_flutter/Reddcoin/assets/media/R-Graphic-CLR.svg)](https://live.reddcoin.com/address/RaWe7UEQ1p2PYmdwbCxAThrq4GucNh3Q6s)
-<a href="https://weblate.rdd.lol/engage/reddcoin-flutter/">
-<img src="https://weblate.rdd.lol/widgets/reddcoin-flutter/-/translations/svg-badge.svg" alt="Übersetzungsstatus" /></a>
+[![Translation status](https://weblate.reddcoin.com/widgets/reddcoin-flutter/-/reddcoin-flutter/svg-badge.svg)](https://weblate.reddcoin.com/engage/reddcoin-flutter/)
 [![Codemagic build status](https://api.codemagic.io/apps/613966bcd1095a40b9432606/613966bcd1095a40b9432605/status_badge.svg)](https://codemagic.io/apps/613966bcd1095a40b9432606/613966bcd1095a40b9432605/latest_build)
 [![Analyze & Test](https://github.com/reddcoin-project/reddcoin_flutter/actions/workflows/analyze-test.yml/badge.svg)](https://github.com/reddcoin-project/reddcoin_flutter/actions/workflows/analyze-test.yml)
 # reddcoin_flutter
