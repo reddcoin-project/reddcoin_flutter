@@ -20,10 +20,15 @@ class AppLocalizations {
   }
 
   static const Map<String, String> availableLocales = {
-    'en': 'English',
-    'hr': 'Croatian',
+    'bg': 'български',
     'de': 'Deutsch',
+    'en': 'English',
+    'es': 'Español',
+    'hr': 'Croatian',
+    'id': 'Bahasa Indonesia',
     'it': 'Italiano',
+    'jp': '日本',
+    'ko': '한국인',
     'nl': 'Nederlands',
     'pt': 'Português',
     'ro': 'Română',
