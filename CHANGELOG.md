@@ -4,6 +4,8 @@
 * Implement bip0044 external/internal chains
 * remove need for master address
 * update support email
+* added translations (Korean, Indonesian, Spanish, Bulgarian, Japanese) 
+  - Thankyou to the following contributors: [kukodas, Jaemin Kim, Dewi Anggita, Ragr Redd, Grigor,daiseikai otoko ]
 ### **0.6.3** (2021-10-11)
 * New setup screens
 * Changelog screen after updates
