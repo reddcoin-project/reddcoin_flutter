@@ -297,7 +297,7 @@ class _ReceiveTabState extends State<ReceiveTab> {
                           text: AppLocalizations.instance
                               .translate('receive_website_exchandes'),
                           action: () {
-                            launchURL('https://rdd.lol/exchanges');
+                            launchURL('https://wiki.reddcoin.com/Exchanges');
                           },
                         ),
                       ],
