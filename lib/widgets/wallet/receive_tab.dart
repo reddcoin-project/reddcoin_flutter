@@ -290,7 +290,7 @@ class _ReceiveTabState extends State<ReceiveTab> {
                           text: AppLocalizations.instance
                               .translate('receive_website_credit'),
                           action: () {
-                            launchURL('https://rdd.lol/buy');
+                            launchURL('https://global.bittrex.com/instant?market=RDD-USDT');
                           },
                         ),
                         PeerButton(
