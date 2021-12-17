@@ -1,3 +1,7 @@
+### **0.6.5** (202x-xx-xx)
+* enable translations of (Korean, Indonesian, Spanish, Bulgarian, Japanese)
+* update list of exchanges
+* update buy Reddcoin link
 ### **0.6.4** (2021-12-11)
 * minor error on uninitialized timer value
 * Correct fee display
