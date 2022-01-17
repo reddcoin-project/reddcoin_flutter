@@ -32,7 +32,7 @@ class _WalletListScreenState extends State<WalletListScreen>
   late ActiveWallets _activeWallets;
   late Animation<double> animation;
   late AnimationController controller;
-  late Timer _priceTimer;
+  Timer? _priceTimer;
 
   @override
   void initState() {
@@ -125,7 +125,9 @@ class _WalletListScreenState extends State<WalletListScreen>
 
   @override
   void dispose() {
-    _priceTimer.cancel();
+    if (_priceTimer != null) {
+      _priceTimer!.cancel();
+    }
     controller.dispose();
     super.dispose();
   }
