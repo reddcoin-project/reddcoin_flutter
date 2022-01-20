@@ -1,4 +1,5 @@
 ### **0.6.4** (2021-12-11)
+* minor error on uninitialized timer value
 * Correct fee display
 * Return to wallet home screen after scan
 * Implement bip0044 external/internal chains
