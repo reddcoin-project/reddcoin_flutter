@@ -1,4 +1,4 @@
-### **0.6.5** (202x-xx-xx)
+### **0.6.5** (2022-01-31)
 * enable translations of (Korean, Indonesian, Spanish, Bulgarian, Japanese)
 * update list of exchanges
 * update buy Reddcoin link
